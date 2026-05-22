@@ -1,0 +1,308 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gold gradient -->
+    <linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2C97E"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#9A7A2E"/>
+    </linearGradient>
+    <linearGradient id="goldH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9A7A2E"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#9A7A2E"/>
+    </linearGradient>
+    <linearGradient id="archGlow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0E0E0E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floorGrad" cx="50%" cy="100%" r="70%">
+      <stop offset="0%" stop-color="#1A1008"/>
+      <stop offset="100%" stop-color="#0E0E0E"/>
+    </radialGradient>
+
+    <!-- 12-pointed geometric star tile pattern (girih) -->
+    <pattern id="girihTile" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <!-- Background of tile -->
+      <rect width="80" height="80" fill="none"/>
+      <!-- 8-pointed star -->
+      <polygon points="40,8 46,28 65,18 55,36 75,40 55,44 65,62 46,52 40,72 34,52 15,62 25,44 5,40 25,36 15,18 34,28"
+        fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.35"/>
+      <!-- Inner diamond -->
+      <polygon points="40,24 52,40 40,56 28,40"
+        fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+      <!-- Center dot -->
+      <circle cx="40" cy="40" r="2" fill="#C9A84C" opacity="0.15"/>
+      <!-- Corner connectors -->
+      <line x1="0" y1="0" x2="15" y2="18" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+      <line x1="80" y1="0" x2="65" y2="18" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+      <line x1="0" y1="80" x2="15" y2="62" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+      <line x1="80" y1="80" x2="65" y2="62" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+    </pattern>
+
+    <!-- Smaller secondary tile -->
+    <pattern id="microTile" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <polygon points="20,4 23,14 33,9 28,18 38,20 28,22 33,31 23,26 20,36 17,26 7,31 12,22 2,20 12,18 7,9 17,14"
+        fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.18"/>
+    </pattern>
+
+    <!-- Arch clip path -->
+    <clipPath id="archClip">
+      <path d="M 680,1080 L 680,500 Q 680,160 960,120 Q 1240,160 1240,500 L 1240,1080 Z"/>
+    </clipPath>
+
+    <!-- Muqarnas / stalactite filter for top -->
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BASE BACKGROUND -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect width="1920" height="1080" fill="#0E0E0E"/>
+
+  <!-- Subtle atmospheric gradient -->
+  <rect width="1920" height="1080" fill="url(#centerGlow)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FULL BG GEOMETRIC TILE PATTERN -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect width="1920" height="1080" fill="url(#girihTile)" opacity="0.4"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BACKGROUND RECEDING ARCHES (depth layers) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Arch 3 — farthest, tiny -->
+  <path d="M 880,720 L 880,600 Q 880,530 960,520 Q 1040,530 1040,600 L 1040,720 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.15"/>
+
+  <!-- Arch 2 — middle distance -->
+  <path d="M 820,900 L 820,640 Q 820,480 960,455 Q 1100,480 1100,640 L 1100,900 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/>
+  <!-- Inner line of arch 2 -->
+  <path d="M 830,900 L 830,645 Q 830,490 960,466 Q 1090,490 1090,645 L 1090,900 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.1"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MAIN IWAN ARCH — Grand Persian Pointed Arch -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Arch glow fill -->
+  <path d="M 620,1080 L 620,520 Q 620,140 960,80 Q 1300,140 1300,520 L 1300,1080 Z"
+    fill="url(#archGlow)" opacity="0.6"/>
+
+  <!-- Tile pattern inside arch -->
+  <path d="M 640,1080 L 640,520 Q 640,160 960,105 Q 1280,160 1280,520 L 1280,1080 Z"
+    fill="url(#microTile)" opacity="0.5"/>
+
+  <!-- Outer arch border — thick gold line -->
+  <path d="M 620,1080 L 620,520 Q 620,140 960,80 Q 1300,140 1300,520 L 1300,1080 Z"
+    fill="none" stroke="url(#goldH)" stroke-width="2.5" opacity="0.7"/>
+
+  <!-- Inner arch border -->
+  <path d="M 640,1080 L 640,524 Q 640,165 960,108 Q 1280,165 1280,524 L 1280,1080 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Second inner arch border -->
+  <path d="M 655,1080 L 655,530 Q 655,175 960,122 Q 1265,175 1265,530 L 1265,1080 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MUQARNAS / STALACTITE FRIEZE (arch top zone) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Muqarnas row 1 (topmost, smallest) -->
+  <g opacity="0.55" filter="url(#softGlow)">
+    <!-- Center tier -->
+    <polygon points="960,88 940,110 960,118 980,110" fill="#C9A84C" opacity="0.4"/>
+    <polygon points="940,110 920,130 940,138 960,118" fill="#C9A84C" opacity="0.3"/>
+    <polygon points="980,110 960,118 980,138 1000,130" fill="#C9A84C" opacity="0.3"/>
+    <polygon points="920,130 900,148 920,155 940,138" fill="#C9A84C" opacity="0.25"/>
+    <polygon points="1000,130 980,138 1000,155 1020,148" fill="#C9A84C" opacity="0.25"/>
+    <polygon points="900,148 882,163 900,170 920,155" fill="#C9A84C" opacity="0.2"/>
+    <polygon points="1020,148 1000,155 1020,170 1038,163" fill="#C9A84C" opacity="0.2"/>
+    <!-- Flanking tiers -->
+    <polygon points="882,163 866,177 882,183 900,170" fill="#C9A84C" opacity="0.18"/>
+    <polygon points="1038,163 1020,170 1038,183 1054,177" fill="#C9A84C" opacity="0.18"/>
+    <polygon points="866,177 850,190 866,196 882,183" fill="#C9A84C" opacity="0.15"/>
+    <polygon points="1054,177 1038,183 1054,196 1070,190" fill="#C9A84C" opacity="0.15"/>
+    <polygon points="850,190 835,202 850,208 866,196" fill="#C9A84C" opacity="0.12"/>
+    <polygon points="1070,190 1054,196 1070,208 1085,202" fill="#C9A84C" opacity="0.12"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT & RIGHT SIDE COLUMNS / PILASTERS -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- LEFT COLUMN -->
+  <rect x="540" y="350" width="80" height="730" fill="#111008" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
+  <!-- Column flutes -->
+  <line x1="553" y1="350" x2="553" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="566" y1="350" x2="566" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="579" y1="350" x2="579" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="592" y1="350" x2="592" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="607" y1="350" x2="607" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <!-- Column capital -->
+  <rect x="525" y="330" width="110" height="24" fill="#1A1208" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+  <rect x="530" y="306" width="100" height="26" fill="#111008" stroke="#C9A84C" stroke-width="0.6" opacity="0.4"/>
+  <!-- Capital ornament -->
+  <polygon points="580,312 565,320 580,322 595,320" fill="#C9A84C" opacity="0.3"/>
+  <polygon points="580,308 572,315 580,317 588,315" fill="#C9A84C" opacity="0.4"/>
+
+  <!-- RIGHT COLUMN -->
+  <rect x="1300" y="350" width="80" height="730" fill="#111008" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
+  <line x1="1313" y1="350" x2="1313" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="1326" y1="350" x2="1326" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="1341" y1="350" x2="1341" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="1354" y1="350" x2="1354" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <line x1="1367" y1="350" x2="1367" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <rect x="1285" y="330" width="110" height="24" fill="#1A1208" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+  <rect x="1290" y="306" width="100" height="26" fill="#111008" stroke="#C9A84C" stroke-width="0.6" opacity="0.4"/>
+  <polygon points="1340,312 1325,320 1340,322 1355,320" fill="#C9A84C" opacity="0.3"/>
+  <polygon points="1340,308 1332,315 1340,317 1348,315" fill="#C9A84C" opacity="0.4"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DECORATIVE BAND — below arch spring line -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Left spandrel ornament -->
+  <circle cx="730" cy="330" r="45" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.3"/>
+  <circle cx="730" cy="330" r="30" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="730,295 740,320 767,320 745,337 754,363 730,346 706,363 715,337 693,320 720,320"
+    fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.35"/>
+
+  <!-- Right spandrel ornament -->
+  <circle cx="1190" cy="330" r="45" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.3"/>
+  <circle cx="1190" cy="330" r="30" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="1190,295 1200,320 1227,320 1205,337 1214,363 1190,346 1166,363 1175,337 1153,320 1180,320"
+    fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.35"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FLOOR — perspective tiles -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="0" y="850" width="1920" height="230" fill="url(#floorGrad)" opacity="0.8"/>
+
+  <!-- Floor tile grid in perspective -->
+  <g opacity="0.3" stroke="#C9A84C" stroke-width="0.5">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="870" x2="1920" y2="870"/>
+    <line x1="0" y1="895" x2="1920" y2="895"/>
+    <line x1="0" y1="925" x2="1920" y2="925"/>
+    <line x1="0" y1="960" x2="1920" y2="960"/>
+    <line x1="0" y1="1000" x2="1920" y2="1000"/>
+    <line x1="0" y1="1040" x2="1920" y2="1040"/>
+    <!-- Converging vertical lines toward vanishing point (960, 840) -->
+    <line x1="960" y1="840" x2="0" y2="1080"/>
+    <line x1="960" y1="840" x2="240" y2="1080"/>
+    <line x1="960" y1="840" x2="480" y2="1080"/>
+    <line x1="960" y1="840" x2="720" y2="1080"/>
+    <line x1="960" y1="840" x2="960" y2="1080"/>
+    <line x1="960" y1="840" x2="1200" y2="1080"/>
+    <line x1="960" y1="840" x2="1440" y2="1080"/>
+    <line x1="960" y1="840" x2="1680" y2="1080"/>
+    <line x1="960" y1="840" x2="1920" y2="1080"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- WIDE HORIZONTAL DECORATIVE BAND (top of frame) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="1920" height="60" fill="#0A0A08" opacity="0.8"/>
+  <!-- Arabesque frieze band -->
+  <rect x="0" y="50" width="1920" height="1" fill="#C9A84C" opacity="0.4"/>
+  <rect x="0" y="55" width="1920" height="1" fill="#C9A84C" opacity="0.2"/>
+
+  <!-- Repeating diamond border top -->
+  <g stroke="#C9A84C" stroke-width="0.6" opacity="0.35">
+    <path d="M 0,30 L 40,10 L 80,30 L 40,50 Z" fill="none"/>
+    <path d="M 80,30 L 120,10 L 160,30 L 120,50 Z" fill="none"/>
+    <path d="M 160,30 L 200,10 L 240,30 L 200,50 Z" fill="none"/>
+    <path d="M 240,30 L 280,10 L 320,30 L 280,50 Z" fill="none"/>
+    <path d="M 320,30 L 360,10 L 400,30 L 360,50 Z" fill="none"/>
+    <path d="M 400,30 L 440,10 L 480,30 L 440,50 Z" fill="none"/>
+    <path d="M 480,30 L 520,10 L 560,30 L 520,50 Z" fill="none"/>
+    <path d="M 560,30 L 600,10 L 640,30 L 600,50 Z" fill="none"/>
+    <path d="M 640,30 L 680,10 L 720,30 L 680,50 Z" fill="none"/>
+    <path d="M 720,30 L 760,10 L 800,30 L 760,50 Z" fill="none"/>
+    <path d="M 800,30 L 840,10 L 880,30 L 840,50 Z" fill="none"/>
+    <path d="M 880,30 L 920,10 L 960,30 L 920,50 Z" fill="none"/>
+    <path d="M 960,30 L 1000,10 L 1040,30 L 1000,50 Z" fill="none"/>
+    <path d="M 1040,30 L 1080,10 L 1120,30 L 1080,50 Z" fill="none"/>
+    <path d="M 1120,30 L 1160,10 L 1200,30 L 1160,50 Z" fill="none"/>
+    <path d="M 1200,30 L 1240,10 L 1280,30 L 1240,50 Z" fill="none"/>
+    <path d="M 1280,30 L 1320,10 L 1360,30 L 1320,50 Z" fill="none"/>
+    <path d="M 1360,30 L 1400,10 L 1440,30 L 1400,50 Z" fill="none"/>
+    <path d="M 1440,30 L 1480,10 L 1520,30 L 1480,50 Z" fill="none"/>
+    <path d="M 1520,30 L 1560,10 L 1600,30 L 1560,50 Z" fill="none"/>
+    <path d="M 1600,30 L 1640,10 L 1680,30 L 1640,50 Z" fill="none"/>
+    <path d="M 1680,30 L 1720,10 L 1760,30 L 1720,50 Z" fill="none"/>
+    <path d="M 1760,30 L 1800,10 L 1840,30 L 1800,50 Z" fill="none"/>
+    <path d="M 1840,30 L 1880,10 L 1920,30 L 1880,50 Z" fill="none"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BOTTOM DECORATIVE BAND -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="0" y="1020" width="1920" height="60" fill="#0A0A08" opacity="0.7"/>
+  <rect x="0" y="1020" width="1920" height="1" fill="#C9A84C" opacity="0.35"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT & RIGHT EDGE COLUMNS (outer frame) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="60" height="1080" fill="#0A0A08" opacity="0.6"/>
+  <rect x="1860" y="0" width="60" height="1080" fill="#0A0A08" opacity="0.6"/>
+  <line x1="60" y1="0" x2="60" y2="1080" stroke="#C9A84C" stroke-width="0.8" opacity="0.35"/>
+  <line x1="1860" y1="0" x2="1860" y2="1080" stroke="#C9A84C" stroke-width="0.8" opacity="0.35"/>
+  <line x1="75" y1="0" x2="75" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+  <line x1="1845" y1="0" x2="1845" y2="1080" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FAR BACKGROUND — outer pilasters left -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="100" y="200" width="40" height="880" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
+  <rect x="200" y="250" width="30" height="830" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <rect x="290" y="290" width="25" height="790" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <rect x="380" y="320" width="20" height="760" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.18"/>
+  <rect x="460" y="340" width="18" height="740" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- Far background — outer pilasters right -->
+  <rect x="1780" y="200" width="40" height="880" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.4" opacity="0.35"/>
+  <rect x="1690" y="250" width="30" height="830" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.25"/>
+  <rect x="1605" y="290" width="25" height="790" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <rect x="1540" y="320" width="20" height="760" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.18"/>
+  <rect x="1462" y="340" width="18" height="740" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- CENTRAL MEDALLION / CROWN KEYSTONE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#glow2)" opacity="0.7">
+    <circle cx="960" cy="88" r="28" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
+    <circle cx="960" cy="88" r="18" fill="none" stroke="#C9A84C" stroke-width="0.6"/>
+    <!-- 8-pointed star at keystone -->
+    <polygon points="960,68 964,82 978,78 970,90 978,102 964,98 960,112 956,98 942,102 950,90 942,78 956,82"
+      fill="#C9A84C" opacity="0.5"/>
+    <polygon points="960,74 963,83 972,80 967,89 972,98 963,95 960,104 957,95 948,98 953,89 948,80 957,83"
+      fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.6"/>
+    <circle cx="960" cy="88" r="6" fill="#C9A84C" opacity="0.4"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- VIGNETTE OVERLAY (darken edges) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="0%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#0E0E0E" stop-opacity="0.85"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+
+</svg>

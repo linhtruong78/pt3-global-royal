@@ -1,0 +1,185 @@
+<!-- ══════════════════════════════════════════════════════════
+     PT3 GLOBAL ROYAL — Code Injection → FOOTER
+     Squarespace: Settings → Advanced → Code Injection → Footer
+     Paste this entire block.
+     This injects the shared navbar, mobile menu, site footer,
+     and all global JS on every page automatically.
+════════════════════════════════════════════════════════════ -->
+
+<!-- ── SHARED NAVBAR (appears on every page) ── -->
+<nav class="pt3-navbar" id="pt3Navbar">
+  <a href="/" class="nav-logo">
+    <!--
+      LOGO IMAGE: Upload logo-v1-transparent.png to Squarespace Files,
+      then replace the src below with the URL you get.
+      Example: src="https://static1.squarespace.com/static/.../logo-v1-transparent.png"
+    -->
+    <img src="[PASTE LOGO URL HERE]" alt="PT3 Global Royal" width="220" height="56" />
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/heritage">Heritage</a></li>
+    <li><a href="/collections">Collections</a></li>
+    <li><a href="/reserve-wines">Reserve Wines</a></li>
+    <li><a href="/shams-beer">Shams Beer</a></li>
+    <li><a href="/distribution">Distribution</a></li>
+  </ul>
+
+  <a href="/contact" class="nav-cta">Inquire</a>
+  <div class="menu-toggle" id="pt3MenuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── SHARED MOBILE MENU ── -->
+<div class="mobile-menu" id="pt3MobileMenu">
+  <a href="/">Home</a>
+  <a href="/heritage">Heritage</a>
+  <a href="/collections">Collections</a>
+  <a href="/reserve-wines">Reserve Wines</a>
+  <a href="/shams-beer">Shams Beer</a>
+  <a href="/distribution">Distribution</a>
+  <a href="/contact" style="color:var(--color-gold);">Inquire</a>
+</div>
+
+
+<!-- ── SHARED SITE FOOTER (appears on every page) ── -->
+<footer class="pt3-footer">
+  <div class="footer-grid">
+
+    <div>
+      <div class="footer-logo">PT3 Global Royal</div>
+      <div class="footer-tagline">Arak Sagi Shiraz Reserve Wine &amp; Shams Beer Inc.</div>
+      <p class="footer-desc">
+        A luxury heritage beverage brand inspired by Persian royal culture,
+        premium reserve traditions, and the art of collectible presentation.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/heritage">Heritage</a></li>
+        <li><a href="/collections">Collections</a></li>
+        <li><a href="/reserve-wines">Reserve Wines</a></li>
+        <li><a href="/shams-beer">Shams Beer</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="/distribution">Distribution</a></li>
+        <li><a href="/press">Press &amp; Media</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:info@pt3globalroyal.com">info@pt3globalroyal.com</a></li>
+        <li><a href="/contact">Global Inquiries</a></li>
+        <li><a href="/distribution">Distribution Requests</a></li>
+      </ul>
+      <div style="margin-top:2rem;">
+        <div class="footer-col-title">Follow</div>
+        <div style="display:flex;gap:1rem;margin-top:0.75rem;">
+          <a href="#" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;letter-spacing:0.15em;color:rgba(240,232,216,0.4);transition:color 0.3s ease;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(240,232,216,0.4)'">IG</a>
+          <a href="#" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;letter-spacing:0.15em;color:rgba(240,232,216,0.4);transition:color 0.3s ease;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(240,232,216,0.4)'">YT</a>
+          <a href="#" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;letter-spacing:0.15em;color:rgba(240,232,216,0.4);transition:color 0.3s ease;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(240,232,216,0.4)'">LI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 PT3 Global Royal. All rights reserved.</p>
+    <p class="footer-copy">Crafted for Royal Taste</p>
+  </div>
+</footer>
+
+
+<!-- ══ GLOBAL JS ══ -->
+<script>
+(function() {
+  function initPT3() {
+
+    // ── Mobile menu toggle ──
+    var toggle = document.getElementById('pt3MenuToggle');
+    var menu   = document.getElementById('pt3MobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        var isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      menu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // ── GSAP global animations (only if GSAP loaded) ──
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar scroll
+    var navbar = document.getElementById('pt3Navbar');
+    if (navbar) {
+      ScrollTrigger.create({
+        start: 'top -80',
+        onUpdate: function(self) {
+          navbar.classList.toggle('scrolled', self.scroll() > 80);
+        }
+      });
+    }
+
+    // Fade up on scroll
+    gsap.utils.toArray('.fade-up').forEach(function(el) {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 1.1, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // Fade in on scroll
+    gsap.utils.toArray('.fade-in').forEach(function(el) {
+      gsap.fromTo(el,
+        { opacity: 0 },
+        {
+          opacity: 1, duration: 1.4, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // Divider line draw
+    gsap.utils.toArray('.divider-gold').forEach(function(el) {
+      gsap.fromTo(el,
+        { scaleX: 0, transformOrigin: 'left center' },
+        {
+          scaleX: 1, duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+  }
+
+  // Wait for DOM + a small delay to let GSAP load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(initPT3, 100); });
+  } else {
+    setTimeout(initPT3, 100);
+  }
+})();
+</script>

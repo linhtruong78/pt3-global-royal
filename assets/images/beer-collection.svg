@@ -1,0 +1,369 @@
+<svg viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Warm amber atmosphere -->
+    <radialGradient id="beerAtmos" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#2A1A06"/>
+      <stop offset="50%" stop-color="#160D04"/>
+      <stop offset="100%" stop-color="#0A0804"/>
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="32%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.25"/>
+      <stop offset="40%" stop-color="#A0522D" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0804" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Sun rays gradient -->
+    <radialGradient id="sunCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E2C97E"/>
+      <stop offset="40%" stop-color="#C9A84C"/>
+      <stop offset="80%" stop-color="#9A7A2E"/>
+      <stop offset="100%" stop-color="#6B4E1C" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Beer bottle gradients -->
+    <linearGradient id="beerBottleBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0C0904"/>
+      <stop offset="20%" stop-color="#1A1206"/>
+      <stop offset="50%" stop-color="#251908"/>
+      <stop offset="80%" stop-color="#1A1206"/>
+      <stop offset="100%" stop-color="#0C0904"/>
+    </linearGradient>
+    <linearGradient id="beerSheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="35%" stop-color="#C9A84C" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#E2C97E" stop-opacity="0.22"/>
+      <stop offset="65%" stop-color="#C9A84C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+    <linearGradient id="goldH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9A7A2E"/>
+      <stop offset="50%" stop-color="#E2C97E"/>
+      <stop offset="100%" stop-color="#9A7A2E"/>
+    </linearGradient>
+    <linearGradient id="amberLabel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1C1206"/>
+      <stop offset="100%" stop-color="#0E0A04"/>
+    </linearGradient>
+    <!-- Amber liquid color -->
+    <linearGradient id="beerLiquid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6B3A0A" stop-opacity="0.6"/>
+      <stop offset="30%" stop-color="#9A5C12" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#C47A18" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#9A5C12" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#6B3A0A" stop-opacity="0.6"/>
+    </linearGradient>
+    <!-- Hop pattern -->
+    <pattern id="hopPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="none"/>
+      <!-- Hop cone silhouette -->
+      <ellipse cx="40" cy="35" rx="10" ry="14" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+      <line x1="40" y1="49" x2="40" y2="58" stroke="#C9A84C" stroke-width="0.5" opacity="0.15"/>
+      <path d="M 40,49 Q 28,55 22,65" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+      <path d="M 40,49 Q 52,55 58,65" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+      <ellipse cx="22" cy="67" rx="7" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+      <ellipse cx="58" cy="67" rx="7" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+    </pattern>
+    <!-- Persian 8-star tile -->
+    <pattern id="persianTile" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="none"/>
+      <polygon points="30,6 33,22 47,18 39,30 47,42 33,38 30,54 27,38 13,42 21,30 13,18 27,22"
+        fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+      <polygon points="30,14 32,24 42,22 36,30 42,38 32,36 30,46 28,36 18,38 24,30 18,22 28,24"
+        fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+    </pattern>
+    <!-- Glow filters -->
+    <filter id="sunRayGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="coreGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BACKGROUND -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect width="900" height="1200" fill="#0A0804"/>
+  <rect width="900" height="1200" fill="url(#beerAtmos)"/>
+  <!-- Persian tile BG -->
+  <rect width="900" height="1200" fill="url(#persianTile)" opacity="0.5"/>
+  <!-- Hop pattern layer -->
+  <rect width="900" height="1200" fill="url(#hopPattern)" opacity="0.4"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SUN GLOW (background atmospheric light) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <ellipse cx="450" cy="300" rx="280" ry="250" fill="#C9A84C" opacity="0.06" filter="url(#softBlur)"/>
+  <rect width="900" height="1200" fill="url(#sunGlow)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SHAMS SUN — Main Motif -->
+  <!-- Center at (450, 290) radius 160 -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Outer sun ray ring (long rays) -->
+  <g filter="url(#sunRayGlow)" opacity="0.55">
+    <!-- 16 long rays -->
+    <g stroke="#C9A84C" stroke-width="1.2" opacity="0.7">
+      <line x1="450" y1="290" x2="450" y2="98"/>  <!-- N -->
+      <line x1="450" y1="290" x2="450" y2="482"/>  <!-- S -->
+      <line x1="450" y1="290" x2="258" y2="290"/>  <!-- W -->
+      <line x1="450" y1="290" x2="642" y2="290"/>  <!-- E -->
+      <!-- NE, NW, SE, SW diagonals -->
+      <line x1="450" y1="290" x2="586" y2="154"/>
+      <line x1="450" y1="290" x2="314" y2="154"/>
+      <line x1="450" y1="290" x2="586" y2="426"/>
+      <line x1="450" y1="290" x2="314" y2="426"/>
+      <!-- Secondary 8 rays (45° offset) -->
+      <line x1="450" y1="290" x2="518" y2="107" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="633" y2="222" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="633" y2="358" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="518" y2="473" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="382" y2="473" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="267" y2="358" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="267" y2="222" stroke-width="0.6"/>
+      <line x1="450" y1="290" x2="382" y2="107" stroke-width="0.6"/>
+    </g>
+  </g>
+
+  <!-- Outer sun ring -->
+  <circle cx="450" cy="290" r="158" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+  <circle cx="450" cy="290" r="148" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Persian star polygon — outer (16-pointed) -->
+  <polygon points="
+    450,132 461,167 494,148 484,183 520,178 501,208 538,218 510,240 536,260 502,271 516,308
+    482,308 480,346 450,330 420,346 418,308 384,308 398,271 364,260 390,240 362,218 399,208
+    380,178 416,183 406,148 439,167"
+    fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+
+  <!-- 12-pointed star -->
+  <polygon points="
+    450,162 458,187 484,180 468,202 492,218 468,222 476,248 452,236 450,262
+    448,236 424,248 432,222 408,218 432,202 416,180 442,187"
+    fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Inner decorative rings -->
+  <circle cx="450" cy="290" r="115" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
+  <circle cx="450" cy="290" r="105" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="450" cy="290" r="85" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="450" cy="290" r="72" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- 8-pointed star center -->
+  <g filter="url(#coreGlow)" opacity="0.85">
+    <polygon points="450,222 462,258 500,258 470,280 482,316 450,294 418,316 430,280 400,258 438,258"
+      fill="#C9A84C" opacity="0.3"/>
+    <polygon points="450,232 460,262 490,262 467,279 476,309 450,291 424,309 433,279 410,262 440,262"
+      fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+  </g>
+
+  <!-- Sun core -->
+  <circle cx="450" cy="290" r="52" fill="#C9A84C" opacity="0.08"/>
+  <circle cx="450" cy="290" r="42" fill="url(#sunCore)" opacity="0.4"/>
+  <circle cx="450" cy="290" r="28" fill="#C9A84C" opacity="0.18"/>
+  <circle cx="450" cy="290" r="16" fill="#E2C97E" opacity="0.25"/>
+
+  <!-- Sun face — stylized Persian sun (Lion & Sun motif inspired) -->
+  <!-- Abstract face suggestion -->
+  <circle cx="440" cy="284" r="4" fill="#C9A84C" opacity="0.4"/>
+  <circle cx="460" cy="284" r="4" fill="#C9A84C" opacity="0.4"/>
+  <path d="M 440,298 Q 450,306 460,298" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
+  <path d="M 435,278 Q 440,274 445,278" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+  <path d="M 455,278 Q 460,274 465,278" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BEER BOTTLE -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Bottle shadow -->
+  <ellipse cx="450" cy="1090" rx="80" ry="14" fill="#000" opacity="0.5"/>
+
+  <!-- Crown cap -->
+  <path d="M 432,506 L 428,516 L 430,520 L 470,520 L 472,516 L 468,506 Z" fill="#C9A84C" opacity="0.7"/>
+  <ellipse cx="450" cy="506" rx="18" ry="6" fill="#C9A84C" opacity="0.6"/>
+  <!-- Crown cap serrations -->
+  <path d="M 432,506 Q 434,500 436,506 Q 438,500 440,506 Q 442,500 444,506 Q 446,500 448,506 Q 450,500 452,506 Q 454,500 456,506 Q 458,500 460,506 Q 462,500 464,506 Q 466,500 468,506"
+    fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Bottle neck -->
+  <path d="M 434,520 L 426,640 L 474,640 L 466,520 Z" fill="url(#beerBottleBody)"/>
+  <path d="M 434,520 L 426,640 L 430,640 L 438,520 Z" fill="#C9A84C" opacity="0.06"/>
+
+  <!-- Shoulder -->
+  <path d="M 390,640 Q 390,680 426,695 L 426,640 Z" fill="url(#beerBottleBody)"/>
+  <path d="M 510,640 Q 510,680 474,695 L 474,640 Z" fill="url(#beerBottleBody)"/>
+
+  <!-- Bottle body -->
+  <rect x="390" y="680" width="120" height="390" rx="2" fill="url(#beerBottleBody)"/>
+  <rect x="390" y="680" width="120" height="390" rx="2" fill="url(#beerSheen)"/>
+  <rect x="390" y="680" width="120" height="390" rx="2" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Amber beer visible through glass (label gap) -->
+  <rect x="395" y="808" width="110" height="4" fill="url(#beerLiquid)" opacity="0.6"/>
+  <rect x="395" y="960" width="110" height="4" fill="url(#beerLiquid)" opacity="0.4"/>
+
+  <!-- Bottom -->
+  <ellipse cx="450" cy="1070" rx="60" ry="10" fill="url(#beerBottleBody)"/>
+  <rect x="390" y="1065" width="120" height="15" rx="2" fill="url(#beerBottleBody)"/>
+
+  <!-- Bottle edge highlights -->
+  <line x1="390" y1="680" x2="392" y2="1068" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+  <line x1="510" y1="680" x2="508" y2="1068" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BOTTLE LABEL -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="397" y="720" width="106" height="90" rx="2" fill="url(#amberLabel)"/>
+  <rect x="397" y="720" width="106" height="90" rx="2" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+  <rect x="402" y="725" width="96" height="80" rx="1" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.25"/>
+
+  <!-- Label top band -->
+  <rect x="397" y="720" width="106" height="14" fill="#C9A84C" opacity="0.15"/>
+  <rect x="397" y="720" width="106" height="1" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Shams mini sun on label -->
+  <circle cx="450" cy="760" r="16" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.4"/>
+  <!-- Mini 8-ray sun -->
+  <g stroke="#C9A84C" stroke-width="0.5" opacity="0.5">
+    <line x1="450" y1="744" x2="450" y2="776"/>
+    <line x1="434" y1="760" x2="466" y2="760"/>
+    <line x1="438" y1="748" x2="462" y2="772"/>
+    <line x1="462" y1="748" x2="438" y2="772"/>
+  </g>
+  <circle cx="450" cy="760" r="7" fill="#C9A84C" opacity="0.2"/>
+  <circle cx="450" cy="760" r="3" fill="#C9A84C" opacity="0.4"/>
+
+  <!-- Label bottom band -->
+  <rect x="397" y="800" width="106" height="1" fill="#C9A84C" opacity="0.5"/>
+
+  <!-- Secondary label -->
+  <rect x="403" y="812" width="94" height="50" rx="1" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+  <rect x="412" y="823" width="76" height="1" fill="#C9A84C" opacity="0.3"/>
+  <rect x="418" y="831" width="64" height="1" fill="#C9A84C" opacity="0.2"/>
+  <rect x="422" y="839" width="56" height="1" fill="#C9A84C" opacity="0.2"/>
+  <rect x="412" y="851" width="76" height="1" fill="#C9A84C" opacity="0.25"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- HOP VINE DECORATIONS (flanking bottle) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Left hop vine -->
+  <g opacity="0.45" stroke="#C9A84C" fill="none" stroke-width="0.7">
+    <!-- Main stem -->
+    <path d="M 355,520 Q 370,580 360,640 Q 350,700 365,760 Q 380,820 365,880"/>
+    <!-- Branch 1 -->
+    <path d="M 360,580 Q 340,570 328,555"/>
+    <!-- Branch 2 -->
+    <path d="M 362,660 Q 342,650 330,635"/>
+    <!-- Branch 3 -->
+    <path d="M 364,750 Q 344,740 332,725"/>
+    <!-- Hop cones -->
+    <ellipse cx="325" cy="553" rx="10" ry="14" fill="#A0522D" opacity="0.25"/>
+    <ellipse cx="327" cy="633" rx="9" ry="12" fill="#A0522D" opacity="0.2"/>
+    <ellipse cx="329" cy="723" rx="10" ry="13" fill="#A0522D" opacity="0.2"/>
+    <!-- Hop cone scales -->
+    <line x1="325" y1="543" x2="325" y2="567" stroke-width="0.4"/>
+    <path d="M 318,548 Q 325,543 332,548" stroke-width="0.4"/>
+    <path d="M 316,554 Q 325,549 334,554" stroke-width="0.4"/>
+    <path d="M 316,560 Q 325,555 334,560" stroke-width="0.4"/>
+    <!-- Small leaves -->
+    <path d="M 328,555 Q 315,545 318,532 Q 330,540 328,555 Z" fill="#6B4E1C" opacity="0.2"/>
+    <path d="M 330,635 Q 317,625 320,612 Q 332,620 330,635 Z" fill="#6B4E1C" opacity="0.18"/>
+  </g>
+
+  <!-- Right hop vine -->
+  <g opacity="0.45" stroke="#C9A84C" fill="none" stroke-width="0.7">
+    <path d="M 545,520 Q 530,580 540,640 Q 550,700 535,760 Q 520,820 535,880"/>
+    <path d="M 540,580 Q 560,570 572,555"/>
+    <path d="M 538,660 Q 558,650 570,635"/>
+    <path d="M 536,750 Q 556,740 568,725"/>
+    <ellipse cx="575" cy="553" rx="10" ry="14" fill="#A0522D" opacity="0.25"/>
+    <ellipse cx="573" cy="633" rx="9" ry="12" fill="#A0522D" opacity="0.2"/>
+    <ellipse cx="571" cy="723" rx="10" ry="13" fill="#A0522D" opacity="0.2"/>
+    <line x1="575" y1="543" x2="575" y2="567" stroke-width="0.4"/>
+    <path d="M 568,548 Q 575,543 582,548" stroke-width="0.4"/>
+    <path d="M 566,554 Q 575,549 584,554" stroke-width="0.4"/>
+    <path d="M 566,560 Q 575,555 584,560" stroke-width="0.4"/>
+    <path d="M 572,555 Q 585,545 582,532 Q 570,540 572,555 Z" fill="#6B4E1C" opacity="0.2"/>
+    <path d="M 570,635 Q 583,625 580,612 Q 568,620 570,635 Z" fill="#6B4E1C" opacity="0.18"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ROYAL CROWN (above sun, top of image) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g opacity="0.5" fill="none" stroke="#C9A84C">
+    <!-- Crown arch -->
+    <path d="M 350,60 Q 350,30 450,20 Q 550,30 550,60" stroke-width="1.5"/>
+    <path d="M 370,60 Q 370,38 450,30 Q 530,38 530,60" stroke-width="0.7"/>
+    <!-- Crown points -->
+    <polygon points="450,14 454,28 462,22 458,36 450,30 442,36 438,22 446,28" fill="#C9A84C" opacity="0.6"/>
+    <polygon points="375,42 379,54 386,49 383,62 375,57 367,62 364,49 371,54" fill="#C9A84C" opacity="0.4"/>
+    <polygon points="525,42 529,54 536,49 533,62 525,57 517,62 514,49 521,54" fill="#C9A84C" opacity="0.4"/>
+    <!-- Crown base band -->
+    <line x1="330" y1="65" x2="570" y2="65" stroke-width="1"/>
+    <line x1="338" y1="71" x2="562" y2="71" stroke-width="0.5"/>
+    <!-- Crown gems (circles) -->
+    <circle cx="400" cy="56" r="5" stroke-width="0.8"/>
+    <circle cx="450" cy="54" r="6" stroke-width="0.8"/>
+    <circle cx="500" cy="56" r="5" stroke-width="0.8"/>
+    <circle cx="450" cy="54" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="400" cy="56" r="2.5" fill="#C9A84C" opacity="0.25"/>
+    <circle cx="500" cy="56" r="2.5" fill="#C9A84C" opacity="0.25"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DECORATIVE OUTER FRAME -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="20" y="20" width="860" height="1160" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+  <rect x="32" y="32" width="836" height="1136" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Corner ornaments -->
+  <g fill="none" stroke="#C9A84C" opacity="0.5">
+    <path d="M 20,65 L 20,20 L 65,20" stroke-width="1.5"/>
+    <path d="M 32,75 L 32,32 L 75,32" stroke-width="0.7"/>
+    <circle cx="20" cy="20" r="4" fill="#C9A84C" opacity="0.4"/>
+    <path d="M 880,65 L 880,20 L 835,20" stroke-width="1.5"/>
+    <path d="M 868,75 L 868,32 L 825,32" stroke-width="0.7"/>
+    <circle cx="880" cy="20" r="4" fill="#C9A84C" opacity="0.4"/>
+    <path d="M 20,1135 L 20,1180 L 65,1180" stroke-width="1.5"/>
+    <path d="M 32,1125 L 32,1168 L 75,1168" stroke-width="0.7"/>
+    <circle cx="20" cy="1180" r="4" fill="#C9A84C" opacity="0.4"/>
+    <path d="M 880,1135 L 880,1180 L 835,1180" stroke-width="1.5"/>
+    <path d="M 868,1125 L 868,1168 L 825,1168" stroke-width="0.7"/>
+    <circle cx="880" cy="1180" r="4" fill="#C9A84C" opacity="0.4"/>
+  </g>
+
+  <!-- Mid-rule separators -->
+  <line x1="20" y1="470" x2="350" y2="470" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <line x1="550" y1="470" x2="880" y2="470" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BOTTOM INSCRIPTION AREA -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <line x1="330" y1="1110" x2="570" y2="1110" stroke="#C9A84C" stroke-width="0.8" opacity="0.45"/>
+  <line x1="340" y1="1116" x2="560" y2="1116" stroke="#C9A84C" stroke-width="0.4" opacity="0.3"/>
+  <rect x="390" y="1125" width="120" height="1.5" fill="#C9A84C" opacity="0.4"/>
+  <rect x="405" y="1133" width="90" height="1" fill="#C9A84C" opacity="0.25"/>
+  <rect x="415" y="1141" width="70" height="1" fill="#C9A84C" opacity="0.2"/>
+  <!-- Tiny sun at bottom -->
+  <g stroke="#C9A84C" opacity="0.35" stroke-width="0.6">
+    <circle cx="450" cy="1160" r="10" fill="none"/>
+    <line x1="450" y1="1148" x2="450" y2="1172"/>
+    <line x1="438" y1="1160" x2="462" y2="1160"/>
+    <line x1="442" y1="1152" x2="458" y2="1168"/>
+    <line x1="458" y1="1152" x2="442" y2="1168"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- VIGNETTE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <radialGradient id="vignetteBeer" cx="50%" cy="50%" r="70%">
+    <stop offset="0%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#0A0804" stop-opacity="0.75"/>
+  </radialGradient>
+  <rect width="900" height="1200" fill="url(#vignetteBeer)"/>
+
+</svg>

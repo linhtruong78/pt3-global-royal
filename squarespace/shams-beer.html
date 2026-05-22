@@ -1,0 +1,220 @@
+<!-- ══════════════════════════════════════════════════════════
+     PT3 GLOBAL ROYAL — SHAMS BEER PAGE
+     Squarespace: Edit "Shams Beer" page → Add Block → Code → paste this.
+     IMAGE: Upload beer-hero.jpg and logo-v1-transparent.png → replace [IMAGE: ...].
+════════════════════════════════════════════════════════════ -->
+
+<style>
+  .page-hero { position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#0E0E0E; }
+  .hero-bg-glow { position:absolute;inset:0;background:radial-gradient(ellipse at 65% 40%,rgba(160,82,45,0.55) 0%,transparent 55%),radial-gradient(ellipse at 15% 70%,rgba(201,168,76,0.2) 0%,transparent 50%); }
+  .hero-bg-glow img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.18;mix-blend-mode:luminosity;z-index:-1; }
+  .hero-grain { position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px; }
+  .hero-large-text { position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:20vw;font-weight:300;line-height:1;color:rgba(160,82,45,0.05);pointer-events:none;user-select:none;white-space:nowrap; }
+  @keyframes slowSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes slowSpinRev { from{transform:rotate(360deg)} to{transform:rotate(0deg)} }
+  @keyframes sunPulse { 0%,100%{opacity:0.8;transform:scale(1)} 50%{opacity:1;transform:scale(1.03)} }
+
+  /* STATS */
+  .stats-band { display:grid;gap:1px;background:rgba(201,168,76,0.1); }
+  .stat-item { background:#0E0E0E;padding:3rem 2rem;text-align:center;transition:background 0.3s ease; }
+  .stat-item:hover { background:rgba(201,168,76,0.04); }
+  .stat-num { font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#C9A84C;line-height:1;margin-bottom:0.5rem; }
+  .stat-label { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,216,0.5); }
+
+  /* BEER CARDS */
+  .beer-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.1); }
+  .beer-card { background:#0E0E0E; }
+  .beer-card-top { padding:3rem 2.5rem;position:relative;overflow:hidden;min-height:220px;display:flex;align-items:center;justify-content:center; }
+  .beer-card-body { padding:2.5rem;border-top:1px solid rgba(201,168,76,0.08); }
+  .beer-card-num { font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,0.08);line-height:1;margin-bottom:-0.5rem; }
+  .beer-card-label { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:0.4rem; }
+  .beer-card-name { font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:#F0E8D8;margin-bottom:0.5rem;line-height:1.2; }
+  .beer-card-sub { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.1em;color:rgba(240,232,216,0.4);margin-bottom:1.5rem; }
+  .beer-card-desc { font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:300;line-height:1.9;color:rgba(240,232,216,0.55);margin-bottom:2rem; }
+  .beer-card-specs { display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem; }
+  .spec-label { font-family:'Montserrat',sans-serif;font-size:0.5rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:0.3rem; }
+  .spec-val { font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:#F0E8D8; }
+
+  /* FEATURES */
+  .features-grid { display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,0.1);max-width:1400px;margin:0 auto; }
+  .feature-item { background:#0E0E0E;padding:3.5rem;display:flex;gap:2rem;align-items:flex-start; }
+  .feature-icon { font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:#C9A84C;flex-shrink:0;margin-top:-0.3rem; }
+  .feature-title { font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#F0E8D8;margin-bottom:0.75rem; }
+  .feature-text { font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:300;line-height:1.9;color:rgba(240,232,216,0.5); }
+
+  @media (max-width:768px) {
+    .hero-large-text { display:none; }
+    .hero-split { grid-template-columns:1fr!important;gap:2rem!important;padding:0 1.5rem!important; }
+    .origin-split { grid-template-columns:1fr!important;gap:2.5rem!important; }
+    .beer-grid { grid-template-columns:1fr; }
+    .features-grid { grid-template-columns:1fr; }
+  }
+</style>
+
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-bg-glow">
+    <!-- Upload beer-hero.jpg → replace src -->
+    <img src="[IMAGE: beer-hero.jpg]" alt="" aria-hidden="true" fetchpriority="high" />
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-large-text">SHAMS</div>
+
+  <div class="hero-split" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1400px;margin:0 auto;padding:0 3rem;width:100%;position:relative;z-index:2;align-items:center;">
+
+    <div>
+      <p class="eyebrow" id="ph-eyebrow" style="opacity:0;margin-bottom:1.5rem;">Premium Beer</p>
+      <h1 id="ph-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:#F0E8D8;opacity:0;margin-bottom:1.5rem;">
+        Shams<br/><em style="color:#C9A84C;">Light of Luxury</em>
+      </h1>
+      <div class="divider-gold divider-gold-left" id="ph-line" style="transform:scaleX(0);transform-origin:left;margin-bottom:2rem;"></div>
+      <p id="ph-sub" style="font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:300;line-height:1.9;color:rgba(240,232,216,0.6);max-width:420px;opacity:0;margin-bottom:3rem;">
+        Shams — the Persian word for "sun" — is a premium beer collection that radiates warmth, refinement, and the golden brilliance of a culture that celebrated life at its finest.
+      </p>
+      <div id="ph-cta" style="opacity:0;display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Request Allocation</a>
+        <a href="/collections" class="btn btn-outline">All Collections</a>
+      </div>
+    </div>
+
+    <!-- Sun Ornament -->
+    <div id="ph-visual" style="opacity:0;display:flex;align-items:center;justify-content:center;padding:4rem 0;">
+      <div style="position:relative;width:320px;height:320px;display:flex;align-items:center;justify-content:center;">
+        <div style="position:absolute;inset:0;border:1px solid rgba(201,168,76,0.12);border-radius:50%;animation:slowSpin 80s linear infinite;"></div>
+        <div style="position:absolute;inset:20px;border:1px dashed rgba(201,168,76,0.1);border-radius:50%;animation:slowSpinRev 50s linear infinite;"></div>
+        <div style="position:absolute;inset:40px;border:1px solid rgba(201,168,76,0.18);border-radius:50%;"></div>
+        <div style="position:absolute;inset:0;">
+          <svg width="100%" height="100%" viewBox="0 0 320 320" style="position:absolute;inset:0;animation:slowSpin 120s linear infinite;">
+            <g transform="translate(160,160)">
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(30)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(60)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(90)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(120)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(150)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(180)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(210)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(240)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(270)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(300)"/>
+              <line x1="0" y1="-155" x2="0" y2="-100" stroke="rgba(201,168,76,0.15)" stroke-width="1" transform="rotate(330)"/>
+            </g>
+          </svg>
+        </div>
+        <div style="position:relative;z-index:1;text-align:center;animation:sunPulse 4s ease-in-out infinite;">
+          <img src="[IMAGE: logo-v1-transparent.png]" alt="Shams" style="width:110px;margin:0 auto 0.75rem;" />
+          <p style="font-family:'Cormorant Garamond',serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.7);text-transform:uppercase;">Shams</p>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.45rem;letter-spacing:0.25em;color:rgba(240,232,216,0.4);text-transform:uppercase;margin-top:0.2rem;">Premium Beer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BRAND STORY -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div class="origin-split" style="display:grid;grid-template-columns:1fr 1fr;gap:8rem;max-width:1400px;margin:0 auto;padding:0 3rem;align-items:center;">
+    <div>
+      <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">The Story of Shams</p>
+      <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:#F0E8D8;line-height:1.2;margin-bottom:2rem;">
+        Named for the <em style="color:#C9A84C;">Persian Sun</em>
+      </h2>
+      <div class="divider-gold divider-gold-left fade-up" style="margin-bottom:2rem;"></div>
+      <p class="body-text fade-up" style="margin-bottom:1.5rem;">In ancient Persian culture, the sun — <em style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;">Shams</em> — was a symbol of power, warmth, and the life-giving force that sustained civilization. Persian kings revered it. Artists celebrated it. Poets wrote of its eternal brilliance.</p>
+      <p class="body-text fade-up" style="margin-bottom:1.5rem;">Shams Premium Beer carries this legacy — a beer that shines with the same warmth, brilliance, and cultural pride. It is a premium product for a premium moment, crafted for those who understand that luxury is not a price point, but a standard of living.</p>
+      <p class="body-text fade-up">Each can and bottle is designed to catch the light — gold details that glow, elegant silhouettes that stand apart, and a taste that lives up to its name.</p>
+    </div>
+    <div class="fade-in">
+      <div class="stats-band" style="grid-template-columns:repeat(2,1fr);">
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Premium Ingredients</div></div>
+        <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Signature Expressions</div></div>
+        <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Hospitality Partner</div></div>
+        <div class="stat-item"><div class="stat-num">Gold</div><div class="stat-label">Standard Only</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BEER COLLECTION -->
+<section style="background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">The Collection</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Shams Expressions</h2>
+  </div>
+  <div class="beer-grid fade-in" style="max-width:1400px;margin:0 auto;">
+    <div class="beer-card"><div class="beer-card-top"><div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(160,82,45,0.4) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.12);line-height:1;">☀</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Golden Lager</p></div></div><div class="beer-card-body"><div class="beer-card-num">01</div><p class="beer-card-label">Shams</p><h3 class="beer-card-name">Shams Gold</h3><p class="beer-card-sub">Premium Golden Lager</p><p class="beer-card-desc">The signature expression — a brilliantly clear golden lager with delicate floral notes, crisp malt character, and a smooth, refreshing finish. Effortlessly elegant.</p><div class="beer-card-specs"><div><div class="spec-label">Style</div><div class="spec-val">Golden Lager</div></div><div><div class="spec-label">ABV</div><div class="spec-val">5.0%</div></div><div><div class="spec-label">Format</div><div class="spec-val">330ml / 500ml</div></div></div></div></div>
+    <div class="beer-card"><div class="beer-card-top"><div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,0.25) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.12);line-height:1;">✦</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Reserve Wheat</p></div></div><div class="beer-card-body"><div class="beer-card-num">02</div><p class="beer-card-label">Shams</p><h3 class="beer-card-name">Shams Blanc</h3><p class="beer-card-sub">Premium Reserve Wheat</p><p class="beer-card-desc">A refined wheat beer with soft citrus, coriander, and a velvety, cloud-like texture. Inspired by the Persian tradition of celebrating subtlety and grace in every pleasure.</p><div class="beer-card-specs"><div><div class="spec-label">Style</div><div class="spec-val">Wheat Beer</div></div><div><div class="spec-label">ABV</div><div class="spec-val">4.8%</div></div><div><div class="spec-label">Format</div><div class="spec-val">330ml</div></div></div></div></div>
+    <div class="beer-card"><div class="beer-card-top"><div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(45,10,10,0.6) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.12);line-height:1;">◈</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Dark Reserve</p></div></div><div class="beer-card-body"><div class="beer-card-num">03</div><p class="beer-card-label">Shams</p><h3 class="beer-card-name">Shams Noir</h3><p class="beer-card-sub">Dark Reserve Premium</p><p class="beer-card-desc">A bold dark reserve — roasted malt, dark chocolate, and a whisper of Persian saffron create a beer of unexpected depth, warmth, and unforgettable complexity.</p><div class="beer-card-specs"><div><div class="spec-label">Style</div><div class="spec-val">Dark Reserve</div></div><div><div class="spec-label">ABV</div><div class="spec-val">6.2%</div></div><div><div class="spec-label">Format</div><div class="spec-val">330ml / 750ml</div></div></div></div></div>
+  </div>
+</section>
+
+
+<!-- FEATURES -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">The Shams Standard</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">What Sets Us Apart</h2>
+  </div>
+  <div class="features-grid fade-in">
+    <div class="feature-item"><div class="feature-icon">◉</div><div><div class="feature-title">Premium Ingredients Only</div><div class="feature-text">We source only the finest malts, hops, and water — no shortcuts, no compromises. Every batch of Shams meets the same exacting standard as our reserve wines.</div></div></div>
+    <div class="feature-item"><div class="feature-icon">♛</div><div><div class="feature-title">Luxury Packaging Design</div><div class="feature-text">Gold embossed cans, premium glass bottles, and presentation boxes — Shams packaging is designed to be seen, gifted, and remembered long after the last drop.</div></div></div>
+    <div class="feature-item"><div class="feature-icon">❧</div><div><div class="feature-title">Persian Heritage Inspired</div><div class="feature-text">Each expression draws on the flavours, culture, and aesthetic of ancient Persia — saffron, citrus, warm spice — woven subtly into every recipe for depth and identity.</div></div></div>
+    <div class="feature-item"><div class="feature-icon">✦</div><div><div class="feature-title">Exclusive Distribution</div><div class="feature-text">Shams is available exclusively through five-star hospitality venues, premium retail partners, and private allocation requests. It is not a mass-market beer — it never will be.</div></div></div>
+  </div>
+</section>
+
+
+<!-- OCCASIONS -->
+<section style="padding:7rem 0;background:#1A1A1A;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">Perfect Occasions</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Made for <em style="color:#C9A84C;">Premium Moments</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,168,76,0.1);" class="fade-in">
+      <div style="background:#1A1A1A;padding:3rem 2rem;text-align:center;transition:background 0.3s ease;" onmouseover="this.style.background='rgba(201,168,76,0.04)'" onmouseout="this.style.background='#1A1A1A'"><div style="font-size:2rem;margin-bottom:1.5rem;">🏨</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;margin-bottom:0.75rem;">Luxury Hotels</p><p class="body-text" style="font-size:0.65rem;">The preferred beer of five-star properties and premium hospitality experiences worldwide.</p></div>
+      <div style="background:#1A1A1A;padding:3rem 2rem;text-align:center;transition:background 0.3s ease;" onmouseover="this.style.background='rgba(201,168,76,0.04)'" onmouseout="this.style.background='#1A1A1A'"><div style="font-size:2rem;margin-bottom:1.5rem;">🎁</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;margin-bottom:0.75rem;">Executive Gifts</p><p class="body-text" style="font-size:0.65rem;">Curated gift sets for corporate gifting, client appreciation, and high-value presentations.</p></div>
+      <div style="background:#1A1A1A;padding:3rem 2rem;text-align:center;transition:background 0.3s ease;" onmouseover="this.style.background='rgba(201,168,76,0.04)'" onmouseout="this.style.background='#1A1A1A'"><div style="font-size:2rem;margin-bottom:1.5rem;">🥂</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;margin-bottom:0.75rem;">Private Events</p><p class="body-text" style="font-size:0.65rem;">Weddings, galas, and exclusive private celebrations — Shams elevates every occasion.</p></div>
+      <div style="background:#1A1A1A;padding:3rem 2rem;text-align:center;transition:background 0.3s ease;" onmouseover="this.style.background='rgba(201,168,76,0.04)'" onmouseout="this.style.background='#1A1A1A'"><div style="font-size:2rem;margin-bottom:1.5rem;">🌍</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;margin-bottom:0.75rem;">Global Retail</p><p class="body-text" style="font-size:0.65rem;">Available through select premium retailers and duty-free locations internationally.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section style="padding:8rem 2rem;text-align:center;background:linear-gradient(160deg,#0e0a04,#1a1208);border-top:1px solid rgba(201,168,76,0.15);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.06) 0%,transparent 70%);"></div>
+  <div style="position:relative;z-index:1;">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Bring Shams to Your Venue</p>
+    <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#F0E8D8;margin-bottom:1.5rem;">
+      Let the <em style="color:#C9A84C;">Sun Shine</em> at Your Table
+    </h2>
+    <p class="body-text fade-up" style="max-width:480px;margin:0 auto 3rem;">
+      Contact us to discuss hospitality partnerships, private allocations, exclusive retail agreements, and international distribution for Shams Premium Beer.
+    </p>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="/contact" class="btn btn-primary">Partner With Us</a>
+      <a href="/reserve-wines" class="btn btn-outline">Explore Reserve Wines</a>
+    </div>
+  </div>
+</section>
+
+
+<script>
+(function() {
+  function runHeroAnim() {
+    if (typeof gsap === 'undefined') return;
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('#ph-eyebrow', { opacity:1, y:0, duration:1, delay:0.3 })
+      .to('#ph-title',   { opacity:1, y:0, duration:1.2 }, '-=0.5')
+      .to('#ph-line',    { scaleX:1, duration:1.2 }, '-=0.6')
+      .to('#ph-sub',     { opacity:1, y:0, duration:1 }, '-=0.6')
+      .to('#ph-cta',     { opacity:1, y:0, duration:0.8 }, '-=0.5')
+      .to('#ph-visual',  { opacity:1, duration:1.4, ease:'power2.out' }, '-=1.2');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(runHeroAnim, 150); });
+  } else { setTimeout(runHeroAnim, 150); }
+})();
+</script>

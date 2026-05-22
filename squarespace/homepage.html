@@ -1,0 +1,485 @@
+<!-- ══════════════════════════════════════════════════════════
+     PT3 GLOBAL ROYAL — HOMEPAGE
+     Squarespace: Edit Home page → Add Block → Code → paste this.
+     Make sure the Code Block is set to "HTML" mode (not Markdown).
+
+     IMAGES: Upload these files to Squarespace Files first,
+     then replace each [IMAGE: filename] with the URL you get.
+     Files to upload:
+       • hero-bg.jpg
+       • wine-collection.jpg
+       • beer-collection.jpg
+       • heritage-visual.jpg
+════════════════════════════════════════════════════════════ -->
+
+<!-- ── PAGE-SPECIFIC CSS ── -->
+<style>
+  /* HERO */
+  .pt3-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0E0E0E;
+  }
+  .pt3-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(107,26,42,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(45,10,10,0.6) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(14,14,14,0.85) 0%, rgba(26,10,10,0.75) 50%, rgba(14,14,14,0.9) 100%);
+  }
+  .pt3-hero-bg img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    opacity: 0.18; z-index: -1;
+    mix-blend-mode: luminosity;
+  }
+  .hero-grain {
+    position: absolute; inset: 0; opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+  .hero-lines { position: absolute; inset: 0; overflow: hidden; }
+  .hero-line {
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.08), transparent);
+    width: 1px;
+  }
+  .pt3-hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 0 2rem;
+    max-width: 1000px;
+  }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.4em; text-transform: uppercase;
+    color: #C9A84C; margin-bottom: 2.5rem; opacity: 0;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300; line-height: 1.0;
+    color: #F0E8D8; margin-bottom: 2rem; opacity: 0;
+  }
+  .hero-title em { font-style: italic; color: #C9A84C; }
+  .hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 300;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(240,232,216,0.55); margin-bottom: 3.5rem; opacity: 0;
+  }
+  .hero-actions {
+    display: flex; gap: 1.5rem;
+    justify-content: center; align-items: center;
+    flex-wrap: wrap; opacity: 0;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.75rem; opacity: 0;
+  }
+  .hero-scroll span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: rgba(240,232,216,0.4);
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, #C9A84C, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* BRAND STATEMENT */
+  .brand-statement {
+    padding: 8rem 2rem; text-align: center;
+    background: #0E0E0E; position: relative;
+  }
+  .brand-statement::before {
+    content: ''; position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 6rem;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.4));
+  }
+
+  /* COLLECTIONS GRID */
+  .collections-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: rgba(201,168,76,0.1);
+  }
+  .collection-card {
+    position: relative; height: 680px;
+    overflow: hidden; cursor: pointer;
+  }
+  .collection-card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .collection-card:hover .collection-card-bg { transform: scale(1.05); }
+  .collection-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,14,14,0.95) 0%, rgba(14,14,14,0.3) 60%, transparent 100%);
+    transition: background 0.5s ease;
+  }
+  .collection-card:hover .collection-card-overlay {
+    background: linear-gradient(to top, rgba(14,14,14,0.98) 0%, rgba(14,14,14,0.5) 60%, rgba(14,14,14,0.1) 100%);
+  }
+  .collection-card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 3rem;
+  }
+  .collection-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: rgba(201,168,76,0.1); line-height: 1; margin-bottom: -1rem;
+  }
+  .card-wine .collection-card-bg {
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(139,38,53,0.55) 0%, transparent 60%),
+      linear-gradient(160deg, rgba(26,8,8,0.7) 0%, rgba(45,10,10,0.6) 40%, rgba(14,14,14,0.75) 100%);
+  }
+  .card-beer .collection-card-bg {
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(160,82,45,0.45) 0%, transparent 60%),
+      linear-gradient(160deg, rgba(14,10,6,0.7) 0%, rgba(26,16,8,0.6) 40%, rgba(14,14,14,0.75) 100%);
+  }
+  .card-wine .collection-card-bg img,
+  .card-beer .collection-card-bg img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    z-index: -1;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .collection-card:hover .collection-card-bg img { transform: scale(1.05); }
+
+  /* HERITAGE TEASER */
+  .heritage-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  .heritage-visual {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 40% 50%, rgba(107,26,42,0.4) 0%, transparent 60%),
+      linear-gradient(135deg, #1a0808 0%, #2D0A0A 50%, #0E0E0E 100%);
+  }
+  .heritage-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg, #C9A84C 0px, #C9A84C 1px, transparent 1px, transparent 40px
+    );
+  }
+  .heritage-ornament {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px; height: 280px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .heritage-ornament::before {
+    content: ''; position: absolute; inset: 15px;
+    border: 1px solid rgba(201,168,76,0.1); border-radius: 50%;
+  }
+  .heritage-inner-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; color: rgba(201,168,76,0.3);
+    font-weight: 300; text-align: center; line-height: 1.1;
+  }
+  .heritage-content {
+    padding: 6rem 5rem; display: flex;
+    flex-direction: column; justify-content: center;
+    background: #0E0E0E;
+  }
+
+  /* GLOBAL PRESENCE */
+  .global-section {
+    padding: 8rem 2rem; text-align: center;
+    background: #1A1A1A; position: relative; overflow: hidden;
+  }
+  .global-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.04) 0%, transparent 70%);
+  }
+  .regions-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(201,168,76,0.1);
+    max-width: 1000px; margin: 4rem auto 0;
+  }
+  .region-item {
+    background: #1A1A1A; padding: 2.5rem 1.5rem;
+    text-align: center; transition: background 0.3s ease;
+  }
+  .region-item:hover { background: rgba(201,168,76,0.05); }
+  .region-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300;
+    color: #C9A84C; line-height: 1; margin-bottom: 0.5rem;
+  }
+  .region-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,232,216,0.5);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .collections-grid { grid-template-columns: 1fr; }
+    .collection-card { height: 500px; }
+    .heritage-section { grid-template-columns: 1fr; }
+    .heritage-visual { height: 350px; }
+    .heritage-content { padding: 4rem 2rem; }
+    .regions-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+
+<!-- ════════════════════════
+     HERO
+════════════════════════ -->
+<section class="pt3-hero" id="pt3Hero">
+  <div class="pt3-hero-bg">
+    <!--
+      Upload hero-bg.jpg to Squarespace Files.
+      Replace [IMAGE: hero-bg.jpg] with the URL you get.
+    -->
+    <img src="[IMAGE: hero-bg.jpg]" alt="" aria-hidden="true" fetchpriority="high" />
+  </div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-lines">
+    <div class="hero-line" style="left:15%;height:100%;top:0;"></div>
+    <div class="hero-line" style="left:85%;height:100%;top:0;"></div>
+  </div>
+
+  <div class="pt3-hero-content">
+    <!--
+      Upload logo-v1-transparent.png to Squarespace Files.
+      Replace [IMAGE: logo] with the URL.
+    -->
+    <img
+      src="[IMAGE: logo-v1-transparent.png]"
+      alt="PT3 Global Royal"
+      id="heroLogo"
+      style="width:220px;margin:0 auto 2.5rem;opacity:0;"
+    />
+
+    <p class="hero-eyebrow" id="heroEyebrow">
+      Arak Sagi Shiraz Reserve Wine &nbsp;·&nbsp; Shams Beer Inc.
+    </p>
+
+    <h1 class="hero-title" id="heroTitle">
+      Crafted for<br/><em>Royal Taste</em>
+    </h1>
+
+    <p class="hero-subtitle" id="heroSubtitle">
+      Persian Royal Heritage &nbsp;·&nbsp; Premium Reserve Collection &nbsp;·&nbsp; Est. 2024
+    </p>
+
+    <div class="hero-actions" id="heroActions">
+      <a href="/collections" class="btn btn-primary">Explore Collection</a>
+      <a href="/heritage" class="btn btn-outline">Our Heritage</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" id="heroScroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════
+     BRAND STATEMENT
+════════════════════════ -->
+<section class="brand-statement">
+  <div class="container-narrow">
+    <p class="eyebrow fade-up" style="margin-bottom:2rem;">A Legacy of Refinement</p>
+    <div class="divider-gold fade-up"></div>
+    <h2 class="fade-up" style="
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:300; line-height:1.35;
+      color:#F0E8D8; margin:2.5rem 0; font-style:italic;
+    ">
+      "Where Persian royal heritage meets the<br/>
+      finest traditions of reserve winemaking."
+    </h2>
+    <div class="divider-gold fade-up"></div>
+    <p class="body-text fade-up" style="margin-top:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;">
+      PT3 Global Royal is more than a beverage — it is a collectible experience,
+      a statement of sophistication, a vessel of culture and craft.
+    </p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════
+     COLLECTIONS
+════════════════════════ -->
+<section style="background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:4rem 3rem 2rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:0.75rem;">The Royal Portfolio</p>
+    <h2 class="heading-2 fade-up">The Royal Portfolio</h2>
+  </div>
+
+  <div class="collections-grid fade-in">
+
+    <!-- Reserve Wines -->
+    <div class="collection-card card-wine">
+      <div class="collection-card-bg">
+        <!-- Upload wine-collection.jpg → replace src -->
+        <img src="[IMAGE: wine-collection.jpg]" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;opacity:0.15;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:300;color:#8B2635;line-height:1;">❧</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.2),transparent);"></div>
+      </div>
+      <div class="collection-card-overlay"></div>
+      <div class="collection-card-content">
+        <div class="collection-card-num">01</div>
+        <p class="eyebrow" style="margin-bottom:1rem;">Reserve Wines</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#F0E8D8;margin-bottom:1rem;line-height:1.1;">
+          Arak Sagi<br/>Shiraz Reserve
+        </h3>
+        <p class="body-text" style="margin-bottom:2rem;max-width:360px;">
+          A royal expression aged to perfection — deep, complex, and unforgettably luxurious.
+        </p>
+        <a href="/reserve-wines" class="btn btn-outline" style="font-size:0.6rem;">Discover Wines</a>
+      </div>
+    </div>
+
+    <!-- Shams Beer -->
+    <div class="collection-card card-beer">
+      <div class="collection-card-bg">
+        <!-- Upload beer-collection.jpg → replace src -->
+        <img src="[IMAGE: beer-collection.jpg]" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;opacity:0.12;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:300;color:#A0522D;line-height:1;">☀</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:0;left:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.2),transparent);"></div>
+      </div>
+      <div class="collection-card-overlay"></div>
+      <div class="collection-card-content">
+        <div class="collection-card-num">02</div>
+        <p class="eyebrow" style="margin-bottom:1rem;">Premium Beer</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#F0E8D8;margin-bottom:1rem;line-height:1.1;">
+          Shams<br/>Premium Collection
+        </h3>
+        <p class="body-text" style="margin-bottom:2rem;max-width:360px;">
+          Elegance in every pour — a premium beer crafted for the sophisticated palate.
+        </p>
+        <a href="/shams-beer" class="btn btn-outline" style="font-size:0.6rem;">Discover Shams</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════
+     HERITAGE TEASER
+════════════════════════ -->
+<section class="heritage-section">
+
+  <div class="heritage-visual">
+    <!-- Upload heritage-visual.jpg → replace src -->
+    <img src="[IMAGE: heritage-visual.jpg]" alt="" aria-hidden="true" loading="lazy" decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.22;mix-blend-mode:luminosity;" />
+    <div class="heritage-pattern"></div>
+    <div class="heritage-ornament">
+      <div class="heritage-inner-text">
+        PT3<br/>
+        <span style="font-size:1.5rem;letter-spacing:0.2em;font-family:'Montserrat',sans-serif;font-weight:200;">ROYAL</span>
+      </div>
+    </div>
+    <div style="position:absolute;top:2rem;left:2rem;width:40px;height:40px;border-top:1px solid rgba(201,168,76,0.3);border-left:1px solid rgba(201,168,76,0.3);"></div>
+    <div style="position:absolute;top:2rem;right:2rem;width:40px;height:40px;border-top:1px solid rgba(201,168,76,0.3);border-right:1px solid rgba(201,168,76,0.3);"></div>
+    <div style="position:absolute;bottom:2rem;left:2rem;width:40px;height:40px;border-bottom:1px solid rgba(201,168,76,0.3);border-left:1px solid rgba(201,168,76,0.3);"></div>
+    <div style="position:absolute;bottom:2rem;right:2rem;width:40px;height:40px;border-bottom:1px solid rgba(201,168,76,0.3);border-right:1px solid rgba(201,168,76,0.3);"></div>
+  </div>
+
+  <div class="heritage-content">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Our Heritage</p>
+    <div class="divider-gold divider-gold-left fade-up"></div>
+    <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#F0E8D8;margin:2rem 0;line-height:1.2;">
+      Centuries of Royal<br/><em style="color:#C9A84C;">Persian Tradition</em>
+    </h2>
+    <p class="body-text fade-up" style="margin-bottom:1.5rem;">
+      Born from the crossroads of ancient Persian culture and the timeless art
+      of premium winemaking, PT3 Global Royal carries the spirit of a civilization
+      that valued beauty, craft, and excellence above all else.
+    </p>
+    <p class="body-text fade-up" style="margin-bottom:3rem;">
+      Every bottle is a collectible — a piece of heritage designed for those
+      who understand the difference between luxury and mere expense.
+    </p>
+    <a href="/heritage" class="btn btn-ghost fade-up">Discover Our Story</a>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════
+     GLOBAL PRESENCE
+════════════════════════ -->
+<section class="global-section">
+  <div style="position:relative;z-index:1;">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Global Reach</p>
+    <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#F0E8D8;margin-bottom:1rem;">
+      A Royal Presence,<br/><em style="color:#C9A84C;">Worldwide</em>
+    </h2>
+    <p class="body-text fade-up" style="max-width:500px;margin:0 auto;">
+      PT3 Global Royal is distributed across premium markets, luxury hospitality
+      partners, and exclusive retail destinations internationally.
+    </p>
+    <div class="regions-grid fade-up">
+      <div class="region-item"><div class="region-num">12+</div><div class="region-label">Countries</div></div>
+      <div class="region-item"><div class="region-num">200+</div><div class="region-label">Luxury Partners</div></div>
+      <div class="region-item"><div class="region-num">5★</div><div class="region-label">Hospitality Only</div></div>
+      <div class="region-item"><div class="region-num">100%</div><div class="region-label">Reserve Quality</div></div>
+    </div>
+    <div style="margin-top:3.5rem;" class="fade-up">
+      <a href="/distribution" class="btn btn-outline">Global Distribution</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PAGE-SPECIFIC JS (Hero entrance animation) ── -->
+<script>
+(function() {
+  function runHeroAnim() {
+    if (typeof gsap === 'undefined') return;
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('#heroLogo',     { opacity:1, y:0, duration:1.2, delay:0.3 })
+      .to('#heroEyebrow',  { opacity:1, y:0, duration:1   }, '-=0.5')
+      .to('#heroTitle',    { opacity:1, y:0, duration:1.2 }, '-=0.6')
+      .to('#heroSubtitle', { opacity:1, y:0, duration:1   }, '-=0.7')
+      .to('#heroActions',  { opacity:1, y:0, duration:0.8 }, '-=0.5')
+      .to('#heroScroll',   { opacity:1, duration:0.8      }, '-=0.3');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(runHeroAnim, 150); });
+  } else {
+    setTimeout(runHeroAnim, 150);
+  }
+})();
+</script>

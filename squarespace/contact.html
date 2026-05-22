@@ -1,0 +1,393 @@
+<!-- ============================================================
+  PT3 Global Royal — Contact Page
+  Squarespace: Paste this entire block into a CODE BLOCK on the
+  Contact page (Pages → Contact → Edit → Add Block → Code)
+  The navbar, mobile menu, and footer come from Code Injection Footer.
+  ============================================================ -->
+
+<style>
+  /* ── CONTACT HERO — minimal, text-focused ── */
+  .contact-hero {
+    height: 60vh; min-height: 480px;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: #0E0E0E;
+  }
+  .contact-hero-accent {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+    background: linear-gradient(to left, rgba(201,168,76,0.04), transparent);
+    border-left: 1px solid rgba(201,168,76,0.06);
+  }
+  .contact-hero-dots {
+    position: absolute; right: 3rem; top: 50%; transform: translateY(-50%);
+    display: grid; grid-template-columns: repeat(8, 1fr);
+    gap: 1.2rem; opacity: 0.12;
+    pointer-events: none;
+  }
+  .hdot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--pt3-gold);
+  }
+
+  /* ── FORM ── */
+  .contact-section {
+    padding: 8rem 0;
+    background: #0E0E0E;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 8rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.6rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,232,216,0.5);
+  }
+  .form-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    color: var(--pt3-ivory);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; font-weight: 300;
+    padding: 0.9rem 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+  .form-input:focus { border-color: var(--pt3-gold); }
+  .form-input::placeholder { color: rgba(240,232,216,0.2); font-size: 0.75rem; }
+  .form-select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    color: rgba(240,232,216,0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; font-weight: 300;
+    padding: 0.9rem 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-select:focus { border-color: var(--pt3-gold); color: var(--pt3-ivory); }
+  .form-select option { background: #1A1A1A; color: var(--pt3-ivory); }
+  .form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    color: var(--pt3-ivory);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; font-weight: 300;
+    padding: 0.9rem 0;
+    outline: none; resize: none;
+    transition: border-color 0.3s ease;
+    width: 100%; min-height: 120px;
+  }
+  .form-textarea:focus { border-color: var(--pt3-gold); }
+  .form-textarea::placeholder { color: rgba(240,232,216,0.2); font-size: 0.75rem; }
+
+  /* ── SUCCESS STATE ── */
+  .form-success { display: none; text-align: center; padding: 4rem 2rem; }
+  .form-success.show { display: block; }
+
+  /* ── INFO CARDS (right panel) ── */
+  .info-cards { display: flex; flex-direction: column; gap: 2.5rem; }
+  .info-card {
+    border-left: 1px solid rgba(201,168,76,0.25);
+    padding: 0 0 0 2rem;
+  }
+  .info-card-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--pt3-gold); margin-bottom: 0.6rem;
+  }
+  .info-card-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--pt3-ivory);
+    line-height: 1.5;
+  }
+  .info-card-val a {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  .info-card-val a:hover { color: var(--pt3-gold); }
+  .info-card-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 300;
+    color: rgba(240,232,216,0.45);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SOCIAL LINKS ── */
+  .contact-social { display: flex; gap: 1.5rem; margin-top: 3rem; }
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; color: rgba(240,232,216,0.5);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  .social-link:hover { border-color: var(--pt3-gold); color: var(--pt3-gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr !important; gap: 4rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .contact-hero-dots { display: none; }
+    .contact-hero-accent { display: none; }
+  }
+</style>
+
+
+<!-- ── HERO ── -->
+<section class="contact-hero">
+  <div class="contact-hero-accent"></div>
+
+  <!-- Dot grid decoration (64 dots, 8×8) -->
+  <div class="contact-hero-dots" aria-hidden="true">
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+    <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
+  </div>
+
+  <div style="position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 3rem;width:100%;">
+    <p class="eyebrow" id="ph-eyebrow" style="opacity:0;margin-bottom:1.5rem;">Contact</p>
+    <h1 id="ph-title"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6rem);
+               font-weight:300;line-height:1.05;color:var(--pt3-ivory);
+               opacity:0;max-width:600px;">
+      Begin a<br/><em style="color:var(--pt3-gold);">Royal Conversation</em>
+    </h1>
+    <div class="divider-gold divider-gold-left" id="ph-line"
+         style="margin-top:2rem;transform:scaleX(0);transform-origin:left;"></div>
+  </div>
+</section>
+
+
+<!-- ── CONTACT SECTION ── -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- LEFT — FORM -->
+    <div>
+      <p class="eyebrow fade-up" style="margin-bottom:1rem;">Send an Inquiry</p>
+      <h2 class="fade-up"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);
+                 font-weight:300;color:var(--pt3-ivory);margin-bottom:0.75rem;">
+        We would love<br/>to hear from you.
+      </h2>
+      <p class="body-text fade-up" style="margin-bottom:3.5rem;">
+        All inquiries are handled personally by our team within 48 hours.
+      </p>
+
+      <form id="pt3ContactForm" class="fade-up" onsubmit="pt3HandleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" class="form-input" placeholder="Your first name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input type="text" class="form-input" placeholder="Your last name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" placeholder="+1 000 000 0000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company / Organisation</label>
+            <input type="text" class="form-input" placeholder="Your company name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Country</label>
+            <input type="text" class="form-input" placeholder="Your country" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Inquiry Type *</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Select inquiry type</option>
+              <option>Private Wine Allocation</option>
+              <option>Shams Beer — Hospitality Partnership</option>
+              <option>Distribution Partnership</option>
+              <option>Executive Gift Sets</option>
+              <option>Press &amp; Media</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Message *</label>
+            <textarea class="form-textarea" placeholder="Tell us about your inquiry..." required></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;">
+          <button type="submit" class="btn btn-primary">Send Inquiry</button>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:300;
+                    letter-spacing:0.1em;color:rgba(240,232,216,0.35);">We respond within 48 hours</p>
+        </div>
+      </form>
+
+      <!-- Success state -->
+      <div class="form-success" id="pt3FormSuccess">
+        <div class="divider-gold" style="margin-bottom:2rem;"></div>
+        <p class="eyebrow" style="margin-bottom:1.5rem;color:var(--pt3-gold);">Message Received</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;
+                   font-weight:300;color:var(--pt3-ivory);margin-bottom:1rem;">
+          Thank you for reaching out.
+        </h3>
+        <p class="body-text" style="max-width:400px;margin:0 auto;">
+          A member of the PT3 Global Royal team will be in touch within 48 hours.
+        </p>
+        <div class="divider-gold" style="margin-top:2rem;"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT — CONTACT INFO (sticky panel) -->
+    <div class="fade-up">
+      <div style="position:sticky;top:8rem;">
+
+        <!-- Logo placeholder — replace src with your Squarespace uploaded logo URL -->
+        <!-- [IMAGE: logo-v1-transparent.png] -->
+        <img src="[IMAGE: logo-v1-transparent.png]"
+             alt="PT3 Global Royal"
+             style="width:100px;margin-bottom:3rem;opacity:0.7;" />
+
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-label">Email</div>
+            <div class="info-card-val">
+              <a href="mailto:info@pt3globalroyal.com">info@pt3globalroyal.com</a>
+            </div>
+            <div class="info-card-sub">General inquiries</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Distribution</div>
+            <div class="info-card-val">
+              <a href="mailto:distribution@pt3globalroyal.com">distribution@pt3globalroyal.com</a>
+            </div>
+            <div class="info-card-sub">Partnership &amp; distribution requests</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Press &amp; Media</div>
+            <div class="info-card-val">
+              <a href="mailto:press@pt3globalroyal.com">press@pt3globalroyal.com</a>
+            </div>
+            <div class="info-card-sub">Media, editorial and PR inquiries</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Response Time</div>
+            <div class="info-card-val">Within 48 Hours</div>
+            <div class="info-card-sub">All inquiries handled personally</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Global Headquarters</div>
+            <div class="info-card-val">PT3 Global Royal</div>
+            <div class="info-card-sub">International luxury beverage group</div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div style="margin-top:3rem;">
+          <p class="eyebrow" style="font-size:0.55rem;margin-bottom:1.25rem;">Follow the Brand</p>
+          <div class="contact-social">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── BOTTOM BRAND BAND ── -->
+<section style="padding:6rem 2rem;background:#1A1A1A;
+                border-top:1px solid rgba(201,168,76,0.1);text-align:center;">
+  <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">PT3 Global Royal</p>
+  <p class="fade-up"
+     style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.5rem);
+            font-weight:300;color:rgba(240,232,216,0.6);font-style:italic;">
+    "Crafted for Royal Taste"
+  </p>
+  <div class="divider-gold fade-up" style="margin-top:2.5rem;"></div>
+</section>
+
+
+<!-- ── PAGE SCRIPTS ── -->
+<script>
+(function() {
+  /* Hero entrance animation */
+  function initContactHero() {
+    if (typeof gsap === 'undefined') { setTimeout(initContactHero, 150); return; }
+    gsap.registerPlugin(ScrollTrigger);
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('#ph-eyebrow', { opacity: 1, y: 0, duration: 1,   delay: 0.4 })
+      .to('#ph-title',   { opacity: 1, y: 0, duration: 1.2 }, '-=0.5')
+      .to('#ph-line',    { scaleX: 1,        duration: 1.2 }, '-=0.6');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactHero);
+  } else {
+    initContactHero();
+  }
+
+  /* Contact form success state */
+  window.pt3HandleSubmit = function(e) {
+    e.preventDefault();
+    var form    = document.getElementById('pt3ContactForm');
+    var success = document.getElementById('pt3FormSuccess');
+    if (form && success) {
+      form.style.display = 'none';
+      success.classList.add('show');
+      window.scrollTo({
+        top: success.getBoundingClientRect().top + window.pageYOffset - 100,
+        behavior: 'smooth'
+      });
+    }
+  };
+})();
+</script>

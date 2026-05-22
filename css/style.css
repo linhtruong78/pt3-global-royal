@@ -1,0 +1,459 @@
+/* ============================================================
+   PT3 GLOBAL ROYAL — Brand Style Foundation
+   Stack: Tailwind CDN + GSAP + Custom CSS
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. GOOGLE FONTS
+   Primary:   Cormorant Garamond (luxury serif)
+   Secondary: Montserrat (minimal refined)
+   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+/* ------------------------------------------------------------
+   2. BRAND TOKENS
+   ------------------------------------------------------------ */
+:root {
+  /* Primary Colors */
+  --color-gold:       #C9A84C;
+  --color-gold-light: #E2C97E;
+  --color-gold-dark:  #9A7A2E;
+  --color-burgundy:   #6B1A2A;
+  --color-wine-red:   #8B2635;
+  --color-black:      #0E0E0E;
+  --color-black-soft: #1A1A1A;
+
+  /* Accent Colors */
+  --color-bronze:     #A0522D;
+  --color-ivory:      #F0E8D8;
+  --color-mahogany:   #2D0A0A;
+
+  /* Typography */
+  --font-serif:       'Cormorant Garamond', Georgia, serif;
+  --font-sans:        'Montserrat', sans-serif;
+
+  /* Font Sizes */
+  --text-xs:    0.75rem;
+  --text-sm:    0.875rem;
+  --text-base:  1rem;
+  --text-lg:    1.125rem;
+  --text-xl:    1.25rem;
+  --text-2xl:   1.5rem;
+  --text-3xl:   2rem;
+  --text-4xl:   2.75rem;
+  --text-5xl:   3.75rem;
+  --text-6xl:   5rem;
+  --text-hero:  7rem;
+
+  /* Spacing */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   8rem;
+  --space-2xl:  12rem;
+
+  /* Borders */
+  --border-gold:      1px solid rgba(201, 168, 76, 0.4);
+  --border-gold-full: 1px solid var(--color-gold);
+
+  /* Transitions */
+  --transition-base:  all 0.4s ease;
+  --transition-slow:  all 0.8s ease;
+
+  /* Letter spacing */
+  --tracking-luxury:  0.2em;
+  --tracking-wide:    0.12em;
+  --tracking-normal:  0.05em;
+}
+
+/* ------------------------------------------------------------
+   3. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+/* ------------------------------------------------------------
+   4. TYPOGRAPHY SYSTEM
+   ------------------------------------------------------------ */
+
+/* Display — hero headlines */
+.display-1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-hero);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-ivory);
+}
+
+.display-2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-6xl);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--color-ivory);
+}
+
+/* Headings */
+.heading-1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-5xl);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-ivory);
+}
+
+.heading-2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-ivory);
+}
+
+.heading-3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-ivory);
+}
+
+/* Gold accent heading */
+.heading-gold {
+  color: var(--color-gold);
+}
+
+/* Eyebrow label — small caps above heading */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-luxury);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Body text */
+.body-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(240, 232, 216, 0.75);
+}
+
+.body-text-lg {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(240, 232, 216, 0.8);
+}
+
+/* Caption */
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: rgba(240, 232, 216, 0.5);
+}
+
+/* ------------------------------------------------------------
+   5. BUTTONS
+   ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-luxury);
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+/* Primary — Gold filled */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+.btn-primary:hover {
+  background-color: var(--color-gold-light);
+}
+
+/* Secondary — Gold outline */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-gold);
+  border: var(--border-gold-full);
+}
+.btn-outline:hover {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+/* Ghost — minimal text link */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-ivory);
+  padding: 0;
+  gap: 0.5rem;
+}
+.btn-ghost::after {
+  content: '→';
+  transition: var(--transition-base);
+}
+.btn-ghost:hover {
+  color: var(--color-gold);
+}
+.btn-ghost:hover::after {
+  transform: translateX(4px);
+}
+
+/* ------------------------------------------------------------
+   6. DIVIDERS & DECORATIVE
+   ------------------------------------------------------------ */
+
+.divider-gold {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: var(--space-md) auto;
+}
+
+.divider-gold-left {
+  margin-left: 0;
+}
+
+/* Gold ornament line flanked by dots */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-gold);
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+/* ------------------------------------------------------------
+   7. LAYOUT UTILITIES
+   ------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section-sm {
+  padding: var(--space-lg) 0;
+}
+
+/* ------------------------------------------------------------
+   8. BACKGROUNDS
+   ------------------------------------------------------------ */
+
+.bg-black      { background-color: var(--color-black); }
+.bg-black-soft { background-color: var(--color-black-soft); }
+.bg-mahogany   { background-color: var(--color-mahogany); }
+.bg-burgundy   { background-color: var(--color-burgundy); }
+
+/* Luxury gradient overlays */
+.overlay-dark {
+  background: linear-gradient(to bottom, rgba(14,14,14,0.3) 0%, rgba(14,14,14,0.85) 100%);
+}
+
+.overlay-gold-vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(14,14,14,0.8) 100%);
+}
+
+/* ------------------------------------------------------------
+   9. ANIMATIONS (GSAP handled in JS — CSS fallbacks)
+   ------------------------------------------------------------ */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.line-reveal {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------
+   10. SCROLLBAR
+   ------------------------------------------------------------ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dark);
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------
+   11. SELECTION
+   ------------------------------------------------------------ */
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+/* ------------------------------------------------------------
+   12. MOBILE MENU (global — shared across all pages)
+   ------------------------------------------------------------ */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-gold);
+  transition: all 0.35s ease;
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 14, 14, 0.98);
+  backdrop-filter: blur(16px);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-ivory);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mobile-menu.open a {
+  animation: menuItemIn 0.5s forwards;
+}
+.mobile-menu.open a:nth-child(1) { animation-delay: 0.05s; }
+.mobile-menu.open a:nth-child(2) { animation-delay: 0.10s; }
+.mobile-menu.open a:nth-child(3) { animation-delay: 0.15s; }
+.mobile-menu.open a:nth-child(4) { animation-delay: 0.20s; }
+.mobile-menu.open a:nth-child(5) { animation-delay: 0.25s; }
+.mobile-menu.open a:nth-child(6) { animation-delay: 0.30s; }
+.mobile-menu.open a:nth-child(7) { animation-delay: 0.35s; }
+.mobile-menu a:hover { color: var(--color-gold); }
+
+@keyframes menuItemIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+}
+
+/* ------------------------------------------------------------
+   13. PAGE TRANSITIONS
+   ------------------------------------------------------------ */
+
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--color-black);
+  z-index: 9999;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+/* ------------------------------------------------------------
+   14. GLOBAL HOVER UTILITIES
+   ------------------------------------------------------------ */
+
+.hover-gold { transition: color 0.3s ease; }
+.hover-gold:hover { color: var(--color-gold); }
+
+.hover-lift { transition: transform 0.4s ease; }
+.hover-lift:hover { transform: translateY(-4px); }

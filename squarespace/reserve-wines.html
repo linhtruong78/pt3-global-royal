@@ -1,0 +1,223 @@
+<!-- ══════════════════════════════════════════════════════════
+     PT3 GLOBAL ROYAL — RESERVE WINES PAGE
+     Squarespace: Edit "Reserve Wines" page → Add Block → Code → paste this.
+     IMAGE: Upload wine-hero.jpg and logo-v1-transparent.png → replace [IMAGE: ...].
+════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* HERO */
+  .page-hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; overflow: hidden;
+    background: #0E0E0E;
+  }
+  .hero-bg-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 65% 45%, rgba(139,38,53,0.55) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 70%, rgba(107,26,42,0.45) 0%, transparent 50%);
+  }
+  .hero-bg-glow img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    opacity: 0.18; mix-blend-mode: luminosity; z-index: -1;
+  }
+  .hero-grain { position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px; }
+  .hero-large-text { position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:28vw;font-weight:300;line-height:1;color:rgba(139,38,53,0.06);pointer-events:none;user-select:none;white-space:nowrap; }
+  @keyframes slowSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  /* WINE CARDS */
+  .wine-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.1); }
+  .wine-card { background:#0E0E0E; }
+  .wine-card-top { padding:3rem 2.5rem;position:relative;overflow:hidden;min-height:220px;display:flex;align-items:center;justify-content:center; }
+  .wine-card-glow { position:absolute;inset:0; }
+  .wine-card-body { padding:2.5rem;border-top:1px solid rgba(201,168,76,0.08); }
+  .wine-card-num { font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,0.08);line-height:1;margin-bottom:-0.5rem; }
+  .wine-card-label { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:0.4rem; }
+  .wine-card-name { font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:#F0E8D8;margin-bottom:0.5rem;line-height:1.2; }
+  .wine-card-vintage { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.1em;color:rgba(240,232,216,0.4);margin-bottom:1.5rem; }
+  .wine-card-desc { font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:300;line-height:1.9;color:rgba(240,232,216,0.55);margin-bottom:2rem; }
+  .wine-card-specs { display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem; }
+  .spec-item { background:rgba(201,168,76,0.04);padding:0.75rem; }
+  .spec-label { font-family:'Montserrat',sans-serif;font-size:0.5rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:0.3rem; }
+  .spec-val { font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:#F0E8D8; }
+
+  /* TASTING GRID */
+  .tasting-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,168,76,0.1);max-width:1400px;margin:0 auto; }
+  .tasting-item { background:#0E0E0E;padding:3rem 2rem;text-align:center;transition:background 0.3s ease; }
+  .tasting-item:hover { background:rgba(201,168,76,0.04); }
+  .tasting-icon { font-family:'Cormorant Garamond',serif;font-size:2rem;color:#C9A84C;margin-bottom:1.5rem; }
+  .tasting-label { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:1rem; }
+  .tasting-val { font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F0E8D8;line-height:1.4; }
+
+  /* PAIRING */
+  .pairing-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.1); }
+  .pairing-card { background:#1A1A1A;padding:3.5rem 3rem;transition:background 0.3s ease; }
+  .pairing-card:hover { background:rgba(201,168,76,0.04); }
+
+  @media (max-width:768px) {
+    .hero-large-text { display:none; }
+    .hero-split { grid-template-columns:1fr!important;gap:2rem!important;padding:0 1.5rem!important; }
+    .hero-bottle { display:none!important; }
+    .wine-grid { grid-template-columns:1fr; }
+    .tasting-grid { grid-template-columns:repeat(2,1fr); }
+    .pairing-grid { grid-template-columns:1fr; }
+  }
+</style>
+
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-bg-glow">
+    <!-- Upload wine-hero.jpg → replace src -->
+    <img src="[IMAGE: wine-hero.jpg]" alt="" aria-hidden="true" fetchpriority="high" />
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-large-text">WINE</div>
+
+  <div class="hero-split" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1400px;margin:0 auto;padding:0 3rem;width:100%;position:relative;z-index:2;align-items:center;">
+
+    <div>
+      <p class="eyebrow" id="ph-eyebrow" style="opacity:0;margin-bottom:1.5rem;">Reserve Wines</p>
+      <h1 id="ph-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:#F0E8D8;opacity:0;margin-bottom:1.5rem;">
+        Arak Sagi<br/><em style="color:#C9A84C;">Shiraz Reserve</em>
+      </h1>
+      <div class="divider-gold divider-gold-left" id="ph-line" style="transform:scaleX(0);transform-origin:left;margin-bottom:2rem;"></div>
+      <p id="ph-sub" style="font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:300;line-height:1.9;color:rgba(240,232,216,0.6);max-width:420px;opacity:0;margin-bottom:3rem;">
+        A royal expression of Persian heritage — deep, complex reserve Shiraz wines crafted for collectors, connoisseurs, and luxury hospitality partners worldwide.
+      </p>
+      <div id="ph-cta" style="opacity:0;display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Request Allocation</a>
+        <a href="/collections" class="btn btn-outline">All Collections</a>
+      </div>
+    </div>
+
+    <!-- Bottle Visual -->
+    <div class="hero-bottle" id="ph-bottle" style="opacity:0;display:flex;align-items:center;justify-content:center;padding:4rem 0;">
+      <div style="position:relative;">
+        <div style="position:absolute;inset:-60px;border:1px solid rgba(201,168,76,0.08);border-radius:50%;animation:slowSpin 60s linear infinite;"></div>
+        <div style="position:absolute;inset:-30px;border:1px solid rgba(201,168,76,0.12);border-radius:50%;animation:slowSpin 40s linear infinite reverse;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:22px;height:28px;background:linear-gradient(to bottom,rgba(201,168,76,0.6),rgba(201,168,76,0.3));border-radius:4px 4px 0 0;"></div>
+          <div style="width:38px;height:70px;background:linear-gradient(to bottom,rgba(139,38,53,0.5),rgba(107,26,42,0.7));border:1px solid rgba(201,168,76,0.2);"></div>
+          <div style="width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-top:25px solid rgba(107,26,42,0.7);"></div>
+          <div style="width:130px;height:300px;background:linear-gradient(160deg,rgba(139,38,53,0.5),rgba(107,26,42,0.7),rgba(45,10,10,0.9));border:1px solid rgba(201,168,76,0.2);border-top:none;border-radius:0 0 10px 10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:15%;width:20%;height:100%;background:linear-gradient(to right,transparent,rgba(201,168,76,0.06),transparent);"></div>
+            <div style="position:absolute;width:80%;left:10%;top:20%;bottom:15%;border:1px solid rgba(201,168,76,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.75rem 0.5rem;">
+              <img src="[IMAGE: logo-v1-transparent.png]" alt="" style="width:55px;opacity:0.8;" />
+              <p style="font-family:'Cormorant Garamond',serif;font-size:0.5rem;letter-spacing:0.2em;color:rgba(201,168,76,0.8);text-transform:uppercase;text-align:center;">Shiraz Reserve</p>
+              <div style="width:30px;height:1px;background:rgba(201,168,76,0.4);"></div>
+              <p style="font-family:'Montserrat',sans-serif;font-size:0.38rem;letter-spacing:0.15em;color:rgba(240,232,216,0.5);text-transform:uppercase;">PT3 Global Royal</p>
+            </div>
+          </div>
+          <div style="width:140px;height:10px;background:rgba(45,10,10,0.9);border-radius:0 0 12px 12px;border:1px solid rgba(201,168,76,0.15);border-top:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PHILOSOPHY -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div class="container-narrow" style="text-align:center;">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">The Winemaker's Philosophy</p>
+    <div class="divider-gold fade-up"></div>
+    <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#F0E8D8;line-height:1.35;margin:2.5rem 0;font-style:italic;">
+      "We do not rush complexity. We cultivate it —<br/>season by season, barrel by barrel, until perfection reveals itself."
+    </h2>
+    <div class="divider-gold fade-up"></div>
+    <p class="body-text fade-up" style="margin-top:2.5rem;">
+      Every Arak Sagi Shiraz Reserve is selected from the finest blocks, aged with patience, and bottled only when it meets the exacting standards that Persian royal heritage demands.
+    </p>
+  </div>
+</section>
+
+
+<!-- WINE COLLECTION -->
+<section style="background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">The Collection</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Reserve Expressions</h2>
+  </div>
+  <div class="wine-grid fade-in" style="max-width:1400px;margin:0 auto;">
+    <div class="wine-card">
+      <div class="wine-card-top"><div class="wine-card-glow" style="background:radial-gradient(ellipse at 50% 30%,rgba(139,38,53,0.5) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.15);line-height:1;">❧</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Grand Reserve</p></div></div>
+      <div class="wine-card-body"><div class="wine-card-num">01</div><p class="wine-card-label">Arak Sagi</p><h3 class="wine-card-name">Shiraz Grand Reserve</h3><p class="wine-card-vintage">Single Vineyard · Aged 24 Months</p><p class="wine-card-desc">The crown jewel of the collection — a full-bodied Shiraz of extraordinary depth and complexity. Dark fruit, leather, and Persian spice on the nose, with a finish that lingers for minutes.</p><div class="wine-card-specs"><div class="spec-item"><div class="spec-label">Varietal</div><div class="spec-val">Shiraz 100%</div></div><div class="spec-item"><div class="spec-label">Oak</div><div class="spec-val">French Oak</div></div><div class="spec-item"><div class="spec-label">Volume</div><div class="spec-val">750ml</div></div></div></div>
+    </div>
+    <div class="wine-card">
+      <div class="wine-card-top"><div class="wine-card-glow" style="background:radial-gradient(ellipse at 50% 30%,rgba(107,26,42,0.5) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.15);line-height:1;">♛</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Royal Reserve</p></div></div>
+      <div class="wine-card-body"><div class="wine-card-num">02</div><p class="wine-card-label">Arak Sagi</p><h3 class="wine-card-name">Shiraz Royal Reserve</h3><p class="wine-card-vintage">Heritage Blend · Aged 18 Months</p><p class="wine-card-desc">An elegant expression of Persian terroir — silky tannins, notes of dark cherry, dried rose, and warm spice. Refined, balanced, and deeply pleasurable from first pour to last.</p><div class="wine-card-specs"><div class="spec-item"><div class="spec-label">Varietal</div><div class="spec-val">Shiraz Blend</div></div><div class="spec-item"><div class="spec-label">Oak</div><div class="spec-val">American Oak</div></div><div class="spec-item"><div class="spec-label">Volume</div><div class="spec-val">750ml</div></div></div></div>
+    </div>
+    <div class="wine-card">
+      <div class="wine-card-top"><div class="wine-card-glow" style="background:radial-gradient(ellipse at 50% 30%,rgba(45,10,10,0.7) 0%,transparent 65%);"></div><div style="text-align:center;position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:6rem;color:rgba(201,168,76,0.15);line-height:1;">◈</div><p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,0.5);font-style:italic;">Collector's Edition</p></div></div>
+      <div class="wine-card-body"><div class="wine-card-num">03</div><p class="wine-card-label">Arak Sagi</p><h3 class="wine-card-name">Shiraz Collector's Edition</h3><p class="wine-card-vintage">Limited Release · Aged 36 Months</p><p class="wine-card-desc">A rare, limited release for the most discerning collectors — aged beyond expectation in premium French oak. An investment in taste that appreciates with every year in the cellar.</p><div class="wine-card-specs"><div class="spec-item"><div class="spec-label">Varietal</div><div class="spec-val">Old Vine Shiraz</div></div><div class="spec-item"><div class="spec-label">Oak</div><div class="spec-val">New French Oak</div></div><div class="spec-item"><div class="spec-label">Volume</div><div class="spec-val">750ml / 1.5L</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TASTING PROFILE -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">Sensory Profile</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">The Tasting Experience</h2>
+  </div>
+  <div class="tasting-grid fade-in">
+    <div class="tasting-item"><div class="tasting-icon">◉</div><div class="tasting-label">Colour</div><div class="tasting-val">Deep Crimson<br/>with Garnet Edge</div></div>
+    <div class="tasting-item"><div class="tasting-icon">❋</div><div class="tasting-label">Nose</div><div class="tasting-val">Dark Plum, Persian Spice,<br/>Smoked Cedar</div></div>
+    <div class="tasting-item"><div class="tasting-icon">◎</div><div class="tasting-label">Palate</div><div class="tasting-val">Blackberry, Leather,<br/>Silky Tannins</div></div>
+    <div class="tasting-item"><div class="tasting-icon">✦</div><div class="tasting-label">Finish</div><div class="tasting-val">Long, Warm &amp;<br/>Extraordinarily Complex</div></div>
+  </div>
+</section>
+
+
+<!-- FOOD PAIRING -->
+<section style="padding:7rem 0;background:#1A1A1A;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">Gastronomy</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Perfect Pairings</h2>
+    <div class="pairing-grid fade-up">
+      <div class="pairing-card"><div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#C9A84C;margin-bottom:1.5rem;">🥩</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#F0E8D8;margin-bottom:0.75rem;">Premium Red Meats</p><p class="body-text">Aged wagyu, lamb chops, and slow-roasted game — the bold tannins and complex structure of our Shiraz Reserve elevate the finest cuts to exceptional dining experiences.</p></div>
+      <div class="pairing-card"><div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#C9A84C;margin-bottom:1.5rem;">🧀</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#F0E8D8;margin-bottom:0.75rem;">Aged Cheese Selection</p><p class="body-text">Premium aged manchego, truffle pecorino, and cave-aged gruyère — a classic pairing that brings out the depth and complexity of every glass.</p></div>
+      <div class="pairing-card"><div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#C9A84C;margin-bottom:1.5rem;">🌿</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#F0E8D8;margin-bottom:0.75rem;">Persian Cuisine</p><p class="body-text">Saffron-infused dishes, slow-cooked lamb with pomegranate, and herb-crusted preparations — a heritage pairing that honours the wine's cultural origins.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section style="padding:8rem 2rem;text-align:center;background:#2D0A0A;border-top:1px solid rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.15);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.05) 0%,transparent 70%);"></div>
+  <div style="position:relative;z-index:1;">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Private Allocation</p>
+    <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#F0E8D8;margin-bottom:1.5rem;">
+      Reserve Your <em style="color:#C9A84C;">Bottles</em>
+    </h2>
+    <p class="body-text fade-up" style="max-width:480px;margin:0 auto 3rem;">
+      Our reserve wines are available in limited quantities through exclusive allocation only. Contact us to discuss private cellar orders, gifting sets, and hospitality accounts.
+    </p>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="/contact" class="btn btn-primary">Request Allocation</a>
+      <a href="/shams-beer" class="btn btn-outline">Explore Shams Beer</a>
+    </div>
+  </div>
+</section>
+
+
+<script>
+(function() {
+  function runHeroAnim() {
+    if (typeof gsap === 'undefined') return;
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('#ph-eyebrow', { opacity:1, y:0, duration:1, delay:0.3 })
+      .to('#ph-title',   { opacity:1, y:0, duration:1.2 }, '-=0.5')
+      .to('#ph-line',    { scaleX:1, duration:1.2 }, '-=0.6')
+      .to('#ph-sub',     { opacity:1, y:0, duration:1 }, '-=0.6')
+      .to('#ph-cta',     { opacity:1, y:0, duration:0.8 }, '-=0.5')
+      .to('#ph-bottle',  { opacity:1, duration:1.4, ease:'power2.out' }, '-=1.2');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(runHeroAnim, 150); });
+  } else { setTimeout(runHeroAnim, 150); }
+})();
+</script>

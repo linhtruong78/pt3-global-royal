@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press & Media — PT3 Global Royal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    .navbar { position:fixed;top:0;left:0;right:0;z-index:100;padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease; }
+    .navbar.scrolled { background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);padding:1.2rem 3rem;border-bottom:1px solid rgba(201,168,76,0.15); }
+    .nav-logo img { height:56px;width:auto;transition:all 0.5s ease; }
+    .navbar.scrolled .nav-logo img { height:44px; }
+    .nav-links { display:flex;gap:2.5rem;list-style:none; }
+    .nav-links a { font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,216,0.7);transition:color 0.3s ease; }
+    .nav-links a:hover { color:var(--color-gold); }
+    .nav-cta { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-gold);border:1px solid rgba(201,168,76,0.5);padding:0.6rem 1.4rem;transition:all 0.3s ease; }
+    .nav-cta:hover { background:var(--color-gold);color:var(--color-black); }
+    .press-card { border:1px solid rgba(201,168,76,0.12);padding:3rem;transition:border-color 0.4s ease;position:relative;overflow:hidden; }
+    .press-card::before { content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--color-gold),transparent);transform:scaleX(0);transition:transform 0.5s ease; }
+    .press-card:hover { border-color:rgba(201,168,76,0.25); }
+    .press-card:hover::before { transform:scaleX(1); }
+    .footer { background:#0E0E0E;border-top:1px solid rgba(201,168,76,0.15);padding:3rem;text-align:center; }
+    .footer-copy { font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.15em;color:rgba(240,232,216,0.3); }
+    @media(max-width:768px){.nav-links,.nav-cta{display:none;} .press-grid{grid-template-columns:1fr!important;}}
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/images/logo-v1-transparent.png" alt="PT3 Global Royal" /></a>
+    <ul class="nav-links">
+      <li><a href="heritage.html">Heritage</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="reserve-wines.html">Reserve Wines</a></li>
+      <li><a href="shams-beer.html">Shams Beer</a></li>
+      <li><a href="distribution.html">Distribution</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Inquire</a>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:12rem 2rem 7rem;background:linear-gradient(160deg,#0E0E0E,#1A1A1A);position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);"></div>
+    <div style="max-width:1400px;margin:0 auto;position:relative;z-index:1;">
+      <p class="eyebrow fade-up" style="margin-bottom:1rem;">Press & Media</p>
+      <h1 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:var(--color-ivory);max-width:700px;margin-bottom:1.5rem;">
+        The PT3 Global Royal<br/><em style="color:var(--color-gold);">Press Room</em>
+      </h1>
+      <div class="divider-gold divider-gold-left fade-up" style="margin-bottom:2rem;"></div>
+      <p class="body-text fade-up" style="max-width:520px;">
+        For editorial inquiries, brand assets, interview requests, and media partnerships, please contact our press team directly.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRESS CONTACT -->
+  <section style="padding:6rem 0;background:#0E0E0E;">
+    <div style="max-width:1400px;margin:0 auto;padding:0 3rem;">
+      <div class="press-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;" class="fade-up">
+        <div class="press-card fade-up">
+          <p class="eyebrow" style="margin-bottom:1rem;">Press Inquiries</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--color-ivory);margin-bottom:1rem;">Editorial & Interviews</p>
+          <p class="body-text" style="margin-bottom:1.5rem;">For interview requests, editorial features, and brand coverage enquiries.</p>
+          <a href="mailto:press@pt3globalroyal.com" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-gold);">press@pt3globalroyal.com</a>
+        </div>
+        <div class="press-card fade-up">
+          <p class="eyebrow" style="margin-bottom:1rem;">Brand Assets</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--color-ivory);margin-bottom:1rem;">Logos & Photography</p>
+          <p class="body-text" style="margin-bottom:1.5rem;">High-resolution brand assets, product photography, and approved imagery available on request.</p>
+          <a href="mailto:press@pt3globalroyal.com" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-gold);">Request Assets →</a>
+        </div>
+        <div class="press-card fade-up">
+          <p class="eyebrow" style="margin-bottom:1rem;">Media Partnerships</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--color-ivory);margin-bottom:1rem;">Collaborative Features</p>
+          <p class="body-text" style="margin-bottom:1.5rem;">Luxury lifestyle, food & beverage, and hospitality publications are welcome to discuss long-form partnerships.</p>
+          <a href="contact.html" style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-gold);">Start Conversation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STATEMENT -->
+  <section style="padding:7rem 2rem;background:#1A1A1A;text-align:center;border-top:1px solid rgba(201,168,76,0.1);">
+    <div class="container-narrow">
+      <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Brand Overview</p>
+      <h2 class="fade-up" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--color-ivory);margin-bottom:2rem;line-height:1.3;">
+        PT3 Global Royal is a luxury heritage beverage brand — <em style="color:var(--color-gold);">Arak Sagi Shiraz Reserve Wine & Shams Beer Inc.</em> — inspired by Persian royal culture and the finest traditions of premium reserve winemaking.
+      </h2>
+      <div class="divider-gold fade-up"></div>
+      <div style="display:flex;gap:1.5rem;justify-content:center;margin-top:3rem;flex-wrap:wrap;" class="fade-up">
+        <a href="contact.html" class="btn btn-primary">Press Inquiry</a>
+        <a href="collections.html" class="btn btn-outline">View Collections</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-copy">© 2024 PT3 Global Royal. All rights reserved. · <a href="privacy.html" style="color:rgba(240,232,216,0.4);">Privacy</a> · <a href="terms.html" style="color:rgba(240,232,216,0.4);">Terms</a></p>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({ start:'top -80', onUpdate: self => document.getElementById('navbar').classList.toggle('scrolled', self.scroll() > 80) });
+    gsap.utils.toArray('.fade-up').forEach(el => gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}}));
+    gsap.utils.toArray('.divider-gold').forEach(el => gsap.fromTo(el,{scaleX:0,transformOrigin:'left center'},{scaleX:1,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 95%',toggleActions:'play none none none'}}));
+  </script>
+</body>
+</html>

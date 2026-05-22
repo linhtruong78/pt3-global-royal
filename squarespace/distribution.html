@@ -1,0 +1,415 @@
+<!-- ============================================================
+  PT3 Global Royal — Distribution Page
+  Squarespace: Paste this entire block into a CODE BLOCK on the
+  Distribution page (Pages → Distribution → Edit → Add Block → Code)
+  The navbar, mobile menu, and footer come from Code Injection Footer.
+  ============================================================ -->
+
+<style>
+  /* ── DISTRIBUTION PAGE-SPECIFIC ── */
+  .dist-hero {
+    height: 70vh;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #0E0E0E 0%, #080e0e 50%, #0a1010 100%);
+  }
+  .dist-hero-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .dist-hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .dist-hero-num {
+    position: absolute; right: 4rem; bottom: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18rem; font-weight: 300; line-height: 1;
+    color: rgba(201,168,76,0.04);
+    pointer-events: none; user-select: none;
+  }
+
+  /* ── STATS BAND ── */
+  .dist-stats-band {
+    background: #1A1A1A;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .dist-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .dist-stat-cell {
+    background: #1A1A1A;
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+  .dist-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: var(--pt3-gold); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .dist-stat-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,232,216,0.45);
+  }
+
+  /* ── REGION CARDS ── */
+  .region-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .region-card {
+    background: #0E0E0E;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s ease;
+    cursor: default;
+  }
+  .region-card:hover { background: #111; }
+  .region-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--pt3-gold);
+    transition: height 0.5s ease;
+  }
+  .region-card:hover::before { height: 100%; }
+  .region-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 300;
+    color: rgba(201,168,76,0.06);
+    line-height: 1; margin-bottom: -1.5rem;
+  }
+  .region-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    color: var(--pt3-ivory); margin-bottom: 1.5rem;
+  }
+  .region-countries {
+    display: flex; flex-wrap: wrap;
+    gap: 0.5rem; margin-bottom: 2rem;
+  }
+  .country-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(240,232,216,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 0.35rem 0.75rem;
+  }
+  .region-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 300;
+    line-height: 1.9; color: rgba(240,232,216,0.5);
+  }
+
+  /* ── PARTNER CARDS ── */
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .partner-card {
+    background: #1A1A1A;
+    padding: 3.5rem 3rem;
+    text-align: center;
+    transition: background 0.4s ease;
+  }
+  .partner-card:hover { background: rgba(201,168,76,0.04); }
+  .partner-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; color: var(--pt3-gold);
+    margin-bottom: 1.5rem;
+  }
+  .partner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; color: var(--pt3-ivory);
+    margin-bottom: 1rem; font-weight: 400;
+  }
+  .partner-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 300;
+    line-height: 1.9; color: rgba(240,232,216,0.5);
+  }
+
+  /* ── PROCESS STEPS ── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 2rem; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+  }
+  .step-item { padding: 0 2rem; text-align: center; }
+  .step-num {
+    width: 4rem; height: 4rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--pt3-gold);
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--pt3-ivory);
+    margin-bottom: 0.75rem;
+  }
+  .step-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 300;
+    line-height: 1.8; color: rgba(240,232,216,0.45);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .region-grid, .partner-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+    .process-steps::before { display: none; }
+    .dist-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .dist-hero-num { display: none; }
+    .region-card { padding: 2.5rem 2rem; }
+  }
+</style>
+
+
+<!-- ── HERO ── -->
+<section class="dist-hero">
+  <div class="dist-hero-glow"></div>
+  <div class="dist-hero-grid"></div>
+  <div class="dist-hero-num">VI</div>
+  <div style="position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 3rem;width:100%;">
+    <p class="eyebrow" id="ph-eyebrow" style="opacity:0;margin-bottom:1.5rem;">Global Distribution</p>
+    <h1 id="ph-title"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);
+               font-weight:300;line-height:1.05;color:var(--pt3-ivory);
+               opacity:0;max-width:700px;">
+      A Royal Presence,<br/><em style="color:var(--pt3-gold);">Worldwide</em>
+    </h1>
+    <div class="divider-gold divider-gold-left" id="ph-line"
+         style="margin-top:2rem;transform:scaleX(0);transform-origin:left;"></div>
+  </div>
+</section>
+
+
+<!-- ── GLOBAL STATS ── -->
+<section class="dist-stats-band">
+  <div class="dist-stats-grid fade-in">
+    <div class="dist-stat-cell">
+      <div class="dist-stat-num">12+</div>
+      <div class="dist-stat-label">Countries</div>
+    </div>
+    <div class="dist-stat-cell">
+      <div class="dist-stat-num">200+</div>
+      <div class="dist-stat-label">Luxury Partners</div>
+    </div>
+    <div class="dist-stat-cell">
+      <div class="dist-stat-num">4</div>
+      <div class="dist-stat-label">Global Regions</div>
+    </div>
+    <div class="dist-stat-cell">
+      <div class="dist-stat-num">5★</div>
+      <div class="dist-stat-label">Hospitality Only</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── REGIONAL DISTRIBUTION ── -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">Coverage</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Distribution by Region</h2>
+  </div>
+
+  <div class="region-grid fade-in">
+
+    <div class="region-card">
+      <div class="region-card-num">01</div>
+      <div class="region-name">Middle East &amp; Gulf</div>
+      <div class="region-countries">
+        <span class="country-tag">UAE</span>
+        <span class="country-tag">Qatar</span>
+        <span class="country-tag">Kuwait</span>
+        <span class="country-tag">Bahrain</span>
+        <span class="country-tag">Oman</span>
+        <span class="country-tag">Saudi Arabia</span>
+      </div>
+      <p class="region-text">Our home region — PT3 Global Royal is proudly distributed through the finest luxury hotels, premium retail destinations, and exclusive hospitality venues across the Gulf Cooperation Council states.</p>
+    </div>
+
+    <div class="region-card">
+      <div class="region-card-num">02</div>
+      <div class="region-name">Europe</div>
+      <div class="region-countries">
+        <span class="country-tag">France</span>
+        <span class="country-tag">United Kingdom</span>
+        <span class="country-tag">Germany</span>
+        <span class="country-tag">Italy</span>
+        <span class="country-tag">Switzerland</span>
+        <span class="country-tag">Monaco</span>
+      </div>
+      <p class="region-text">Competing with the finest European luxury beverage brands in their own market — PT3 Global Royal is establishing a growing presence in premium European hospitality and retail channels.</p>
+    </div>
+
+    <div class="region-card">
+      <div class="region-card-num">03</div>
+      <div class="region-name">North America</div>
+      <div class="region-countries">
+        <span class="country-tag">Canada</span>
+        <span class="country-tag">United States</span>
+        <span class="country-tag">Mexico</span>
+      </div>
+      <p class="region-text">Growing rapidly across North America's premium beverage market — available through select importers, luxury hotel accounts, and premium specialty retailers in major metropolitan markets.</p>
+    </div>
+
+    <div class="region-card">
+      <div class="region-card-num">04</div>
+      <div class="region-name">Asia Pacific</div>
+      <div class="region-countries">
+        <span class="country-tag">Singapore</span>
+        <span class="country-tag">Hong Kong</span>
+        <span class="country-tag">Japan</span>
+        <span class="country-tag">South Korea</span>
+        <span class="country-tag">Australia</span>
+      </div>
+      <p class="region-text">Asia's luxury beverage market is among the world's fastest growing. PT3 Global Royal is proud to partner with premium hospitality groups and exclusive importers across the Asia Pacific region.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── PARTNER NETWORK ── -->
+<section style="padding:7rem 0;background:#1A1A1A;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem 3rem;">
+    <p class="eyebrow fade-up" style="margin-bottom:1rem;">Who We Work With</p>
+    <h2 class="heading-2 fade-up" style="margin-bottom:4rem;">Our Partner Network</h2>
+  </div>
+
+  <div class="partner-grid fade-in">
+
+    <div class="partner-card">
+      <div class="partner-icon">🏨</div>
+      <div class="partner-title">Luxury Hospitality</div>
+      <p class="partner-text">Five-star hotels, ultra-luxury resorts, exclusive private clubs, and premium restaurants. PT3 Global Royal is the beverage of choice for the world's finest hospitality experiences.</p>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-icon">◈</div>
+      <div class="partner-title">Premium Retail</div>
+      <p class="partner-text">Curated wine merchants, luxury specialty retailers, premium duty-free channels, and high-end department store beverage departments in select global markets.</p>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-icon">🌍</div>
+      <div class="partner-title">International Importers</div>
+      <p class="partner-text">Exclusive importers and distributors who share our commitment to luxury positioning, premium placement, and the highest standards of brand presentation and market representation.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── BECOME A DISTRIBUTOR — PROCESS ── -->
+<section style="padding:7rem 0;background:#0E0E0E;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 3rem;">
+    <div style="text-align:center;margin-bottom:5rem;">
+      <p class="eyebrow fade-up" style="margin-bottom:1rem;">Partnership Process</p>
+      <h2 class="heading-2 fade-up">Become a Distribution Partner</h2>
+    </div>
+
+    <div class="process-steps fade-up">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-title">Initial Inquiry</div>
+        <p class="step-text">Submit your partnership inquiry through our contact form or reach out directly to our distribution team.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-title">Market Assessment</div>
+        <p class="step-text">We evaluate market fit, distribution capability, and brand alignment to ensure a premium partnership.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-title">Agreement &amp; Onboarding</div>
+        <p class="step-text">Exclusive territory agreements, brand training, and full marketing support from our international team.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-title">Launch &amp; Growth</div>
+        <p class="step-text">Co-branded launch support, ongoing marketing materials, and a dedicated account management relationship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA ── -->
+<section style="padding:8rem 2rem;text-align:center;background:#0E0E0E;
+                border-top:1px solid rgba(201,168,76,0.12);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;
+              background:radial-gradient(ellipse at center,rgba(201,168,76,0.05) 0%,transparent 65%);"></div>
+  <div style="position:relative;z-index:1;">
+    <p class="eyebrow fade-up" style="margin-bottom:1.5rem;">Join Our Global Network</p>
+    <h2 class="fade-up"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);
+               font-weight:300;color:var(--pt3-ivory);margin-bottom:1.5rem;">
+      Bring PT3 Global Royal<br/><em style="color:var(--pt3-gold);">to Your Market</em>
+    </h2>
+    <p class="body-text fade-up" style="max-width:500px;margin:0 auto 3rem;">
+      We are actively seeking premium distribution partners in new markets. If you represent a luxury hospitality group, premium retail network, or specialist importer, we would welcome the opportunity to discuss an exclusive partnership.
+    </p>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="/contact" class="btn btn-primary">Distribution Inquiry</a>
+      <a href="/collections" class="btn btn-outline">View Collections</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PAGE HERO ANIMATION ── -->
+<script>
+(function() {
+  function initDistHero() {
+    if (typeof gsap === 'undefined') { setTimeout(initDistHero, 150); return; }
+    gsap.registerPlugin(ScrollTrigger);
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('#ph-eyebrow', { opacity: 1, y: 0, duration: 1,   delay: 0.4 })
+      .to('#ph-title',   { opacity: 1, y: 0, duration: 1.2 }, '-=0.5')
+      .to('#ph-line',    { scaleX: 1,        duration: 1.2 }, '-=0.6');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDistHero);
+  } else {
+    initDistHero();
+  }
+})();
+</script>

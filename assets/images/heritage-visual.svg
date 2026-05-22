@@ -1,0 +1,411 @@
+<svg viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Deep persian atmosphere -->
+    <radialGradient id="heritageAtmos" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1C0808"/>
+      <stop offset="45%" stop-color="#100505"/>
+      <stop offset="100%" stop-color="#080305"/>
+    </radialGradient>
+    <radialGradient id="archInteriorGlow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#2A0A14" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#6B1A2A" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <!-- Night sky gradient inside arch -->
+    <linearGradient id="archSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0510"/>
+      <stop offset="40%" stop-color="#100815"/>
+      <stop offset="70%" stop-color="#1A0A08"/>
+      <stop offset="100%" stop-color="#0A0305"/>
+    </linearGradient>
+    <!-- Gold gradients -->
+    <linearGradient id="goldH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9A7A2E"/>
+      <stop offset="50%" stop-color="#E2C97E"/>
+      <stop offset="100%" stop-color="#9A7A2E"/>
+    </linearGradient>
+    <linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2C97E"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#9A7A2E"/>
+    </linearGradient>
+    <!-- Column gradient -->
+    <linearGradient id="colGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0E0807"/>
+      <stop offset="30%" stop-color="#1A1008"/>
+      <stop offset="50%" stop-color="#221408"/>
+      <stop offset="70%" stop-color="#1A1008"/>
+      <stop offset="100%" stop-color="#0E0807"/>
+    </linearGradient>
+    <!-- Persian 12-star girih tile -->
+    <pattern id="girihHeritage" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="none"/>
+      <!-- 12-pointed star -->
+      <polygon points="
+        50,10 54,28 70,20 63,36 80,36 70,50 80,64 63,64 70,80 54,72 50,90
+        46,72 30,80 37,64 20,64 30,50 20,36 37,36 30,20 46,28"
+        fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+      <!-- Inner hexagon -->
+      <polygon points="50,25 66,34 66,52 50,61 34,52 34,34"
+        fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.15"/>
+      <circle cx="50" cy="50" r="3" fill="#C9A84C" opacity="0.12"/>
+      <!-- Interlocking lines -->
+      <line x1="50" y1="10" x2="50" y2="90" stroke="#C9A84C" stroke-width="0.3" opacity="0.08"/>
+      <line x1="10" y1="50" x2="90" y2="50" stroke="#C9A84C" stroke-width="0.3" opacity="0.08"/>
+    </pattern>
+    <!-- Fine muqarnas arch pattern (clip to arch interior) -->
+    <clipPath id="archInterior">
+      <path d="M 160,1200 L 160,560 Q 160,80 450,50 Q 740,80 740,560 L 740,1200 Z"/>
+    </clipPath>
+    <!-- Glow filters -->
+    <filter id="goldGlowHeritage">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="deepBlur">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="medBlur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <!-- Cypress tree shape -->
+    <symbol id="cypress" viewBox="0 0 40 140">
+      <path d="M 20,0 Q 26,20 24,40 Q 30,50 26,70 Q 32,80 28,100 Q 34,110 30,130 L 20,140 L 10,130 Q 6,110 12,100 Q 8,80 14,70 Q 10,50 16,40 Q 14,20 20,0 Z"
+        fill="#0A0808" stroke="#C9A84C" stroke-width="0.4" opacity="0.6"/>
+    </symbol>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BACKGROUND -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect width="900" height="1200" fill="#080305"/>
+  <rect width="900" height="1200" fill="url(#heritageAtmos)"/>
+  <!-- Girih tile background -->
+  <rect width="900" height="1200" fill="url(#girihHeritage)" opacity="0.55"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ATMOSPHERIC GLOWS -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <ellipse cx="450" cy="400" rx="300" ry="380" fill="#6B1A2A" opacity="0.08" filter="url(#deepBlur)"/>
+  <ellipse cx="450" cy="280" rx="200" ry="200" fill="#C9A84C" opacity="0.04" filter="url(#deepBlur)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ARCH INTERIOR (sky/depth behind arch) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <path d="M 170,1200 L 170,564 Q 170,90 450,58 Q 730,90 730,564 L 730,1200 Z"
+    fill="url(#archSky)" opacity="0.9"/>
+  <path d="M 170,1200 L 170,564 Q 170,90 450,58 Q 730,90 730,564 L 730,1200 Z"
+    fill="url(#archInteriorGlow)"/>
+
+  <!-- Star field inside arch -->
+  <g filter="url(#starGlow)" opacity="0.6">
+    <!-- Scattered stars in arch sky -->
+    <circle cx="280" cy="120" r="1.2" fill="#E2C97E"/>
+    <circle cx="340" cy="95" r="0.8" fill="#E2C97E"/>
+    <circle cx="390" cy="140" r="1" fill="#F0E8D8"/>
+    <circle cx="420" cy="80" r="1.5" fill="#E2C97E"/>
+    <circle cx="450" cy="110" r="0.7" fill="#F0E8D8"/>
+    <circle cx="480" cy="75" r="1.2" fill="#E2C97E"/>
+    <circle cx="520" cy="130" r="0.9" fill="#F0E8D8"/>
+    <circle cx="560" cy="100" r="1.1" fill="#E2C97E"/>
+    <circle cx="610" cy="120" r="0.8" fill="#F0E8D8"/>
+    <circle cx="300" cy="170" r="0.7" fill="#E2C97E"/>
+    <circle cx="370" cy="185" r="1" fill="#C9A84C"/>
+    <circle cx="440" cy="155" r="0.8" fill="#F0E8D8"/>
+    <circle cx="510" cy="175" r="1.2" fill="#E2C97E"/>
+    <circle cx="580" cy="160" r="0.9" fill="#F0E8D8"/>
+    <circle cx="640" cy="145" r="0.7" fill="#E2C97E"/>
+    <circle cx="260" cy="210" r="0.8" fill="#F0E8D8"/>
+    <circle cx="315" cy="240" r="1" fill="#E2C97E"/>
+    <circle cx="590" cy="220" r="0.9" fill="#F0E8D8"/>
+    <circle cx="650" cy="195" r="1.1" fill="#E2C97E"/>
+    <!-- Crescent moon suggestion -->
+    <path d="M 630,88 Q 640,75 650,85 Q 645,95 630,88 Z" fill="#E2C97E" opacity="0.4"/>
+  </g>
+
+  <!-- Interior arch tile pattern (girih visible inside) -->
+  <g clip-path="url(#archInterior)" opacity="0.3">
+    <rect x="160" y="50" width="580" height="1150" fill="url(#girihHeritage)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- RECEDING ARCH (depth layer 2 inside main arch) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <path d="M 250,1200 L 250,640 Q 250,250 450,230 Q 650,250 650,640 L 650,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.2"/>
+  <path d="M 262,1200 L 262,645 Q 262,263 450,244 Q 638,263 638,645 L 638,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+
+  <!-- Smallest inner arch (depth 3) -->
+  <path d="M 320,1200 L 320,720 Q 320,440 450,425 Q 580,440 580,720 L 580,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.18"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- CYPRESS TREES (silhouettes inside arch) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Left cypress group -->
+  <use href="#cypress" x="220" y="920" width="30" height="105" opacity="0.5"/>
+  <use href="#cypress" x="240" y="940" width="24" height="90" opacity="0.4"/>
+  <use href="#cypress" x="200" y="945" width="20" height="80" opacity="0.35"/>
+
+  <!-- Right cypress group -->
+  <use href="#cypress" x="640" y="920" width="30" height="105" opacity="0.5"/>
+  <use href="#cypress" x="626" y="940" width="24" height="90" opacity="0.4"/>
+  <use href="#cypress" x="660" y="945" width="20" height="80" opacity="0.35"/>
+
+  <!-- Far center cypress (tiny, deep distance) -->
+  <use href="#cypress" x="428" y="1000" width="16" height="60" opacity="0.3"/>
+  <use href="#cypress" x="450" y="1010" width="14" height="55" opacity="0.25"/>
+  <use href="#cypress" x="410" y="1008" width="12" height="50" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DISTANT ARCHITECTURE (inside arch, far away) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Distant dome silhouette -->
+  <ellipse cx="450" cy="1005" rx="55" ry="35" fill="#0D0508" opacity="0.7"/>
+  <path d="M 395,1005 L 396,1040 L 504,1040 L 505,1005 Z" fill="#0D0508" opacity="0.7"/>
+  <!-- Dome lantern -->
+  <rect x="445" y="975" width="10" height="30" fill="#100808" opacity="0.6"/>
+  <ellipse cx="450" cy="975" rx="12" ry="8" fill="#100808" opacity="0.6"/>
+  <!-- Gold dome line -->
+  <path d="M 395,1005 Q 450,975 505,1005" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Side minarets -->
+  <rect x="335" y="940" width="8" height="80" fill="#0D0508" opacity="0.5"/>
+  <ellipse cx="339" cy="940" rx="6" ry="12" fill="#0D0508" opacity="0.5"/>
+  <rect x="554" y="940" width="8" height="80" fill="#0D0508" opacity="0.5"/>
+  <ellipse cx="558" cy="940" rx="6" ry="12" fill="#0D0508" opacity="0.5"/>
+
+  <!-- Distant horizon line -->
+  <line x1="170" y1="1020" x2="730" y2="1020" stroke="#C9A84C" stroke-width="0.4" opacity="0.15"/>
+
+  <!-- Ground plane -->
+  <rect x="170" y="1020" width="560" height="180" fill="#0A0506" opacity="0.6"/>
+  <!-- Ground reflection/shimmer -->
+  <line x1="170" y1="1025" x2="730" y2="1025" stroke="#C9A84C" stroke-width="0.3" opacity="0.1"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MAIN IWAN ARCH — OUTER FRAME -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Arch background fill (stone) -->
+  <path d="M 130,1200 L 130,560 Q 130,60 450,22 Q 770,60 770,560 L 770,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.5" filter="url(#goldGlowHeritage)"/>
+
+  <!-- Secondary arch line -->
+  <path d="M 148,1200 L 148,562 Q 148,76 450,40 Q 752,76 752,562 L 752,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+
+  <!-- Third arch line -->
+  <path d="M 160,1200 L 160,564 Q 160,86 450,50 Q 740,86 740,564 L 740,1200 Z"
+    fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MUQARNAS / STALACTITE (arch top interior) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g opacity="0.5" filter="url(#goldGlowHeritage)">
+    <!-- Cascading muqarnas tiers -->
+    <!-- Tier 1 (topmost) -->
+    <polygon points="450,50 436,75 450,82 464,75" fill="#C9A84C" opacity="0.35"/>
+    <!-- Tier 2 -->
+    <polygon points="436,75 422,96 436,103 450,82" fill="#C9A84C" opacity="0.28"/>
+    <polygon points="464,75 450,82 464,103 478,96" fill="#C9A84C" opacity="0.28"/>
+    <!-- Tier 3 -->
+    <polygon points="422,96 408,114 422,120 436,103" fill="#C9A84C" opacity="0.22"/>
+    <polygon points="478,96 464,103 478,120 492,114" fill="#C9A84C" opacity="0.22"/>
+    <!-- Tier 4 -->
+    <polygon points="408,114 394,130 408,136 422,120" fill="#C9A84C" opacity="0.18"/>
+    <polygon points="492,114 478,120 492,136 506,130" fill="#C9A84C" opacity="0.18"/>
+    <!-- Tier 5 -->
+    <polygon points="394,130 380,144 394,150 408,136" fill="#C9A84C" opacity="0.15"/>
+    <polygon points="506,130 492,136 506,150 520,144" fill="#C9A84C" opacity="0.15"/>
+    <!-- Tier 6 -->
+    <polygon points="380,144 366,157 380,162 394,150" fill="#C9A84C" opacity="0.12"/>
+    <polygon points="520,144 506,150 520,162 534,157" fill="#C9A84C" opacity="0.12"/>
+    <!-- Tier 7 -->
+    <polygon points="366,157 352,169 366,174 380,162" fill="#C9A84C" opacity="0.10"/>
+    <polygon points="534,157 520,162 534,174 548,169" fill="#C9A84C" opacity="0.10"/>
+    <!-- Tier 8 (widest) -->
+    <polygon points="352,169 338,180 352,185 366,174" fill="#C9A84C" opacity="0.08"/>
+    <polygon points="548,169 534,174 548,185 562,180" fill="#C9A84C" opacity="0.08"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT COLUMN / PILASTER (flanking arch) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Left pilaster -->
+  <rect x="70" y="280" width="62" height="920" fill="url(#colGrad)" opacity="0.8"/>
+  <rect x="70" y="280" width="62" height="920" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.3"/>
+  <!-- Pilaster flutes -->
+  <line x1="82" y1="280" x2="82" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="92" y1="280" x2="92" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="101" y1="280" x2="101" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="111" y1="280" x2="111" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="120" y1="280" x2="120" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <!-- Pilaster capital -->
+  <rect x="58" y="258" width="86" height="26" fill="#140C08" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+  <rect x="62" y="238" width="78" height="22" fill="#0E0A06" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/>
+  <!-- Persian capital ornament (stylized bull head) -->
+  <path d="M 101,242 Q 88,248 80,256 Q 88,250 101,246 Q 114,250 122,256 Q 114,248 101,242 Z"
+    fill="#C9A84C" opacity="0.25"/>
+  <!-- Band on capital -->
+  <rect x="62" y="258" width="78" height="3" fill="#C9A84C" opacity="0.35"/>
+  <rect x="62" y="264" width="78" height="1" fill="#C9A84C" opacity="0.2"/>
+
+  <!-- Left pilaster geometric panel (mid-section) -->
+  <rect x="76" y="380" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="101,388 109,404 101,420 93,404" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+  <rect x="76" y="540" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="101,548 109,564 101,580 93,564" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+  <rect x="76" y="700" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="101,708 109,724 101,740 93,724" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- RIGHT COLUMN / PILASTER -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="768" y="280" width="62" height="920" fill="url(#colGrad)" opacity="0.8"/>
+  <rect x="768" y="280" width="62" height="920" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.3"/>
+  <line x1="780" y1="280" x2="780" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="789" y1="280" x2="789" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="799" y1="280" x2="799" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="809" y1="280" x2="809" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <line x1="818" y1="280" x2="818" y2="1200" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+  <rect x="756" y="258" width="86" height="26" fill="#140C08" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+  <rect x="760" y="238" width="78" height="22" fill="#0E0A06" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/>
+  <path d="M 799,242 Q 786,248 778,256 Q 786,250 799,246 Q 812,250 820,256 Q 812,248 799,242 Z"
+    fill="#C9A84C" opacity="0.25"/>
+  <rect x="760" y="258" width="78" height="3" fill="#C9A84C" opacity="0.35"/>
+  <rect x="760" y="264" width="78" height="1" fill="#C9A84C" opacity="0.2"/>
+  <rect x="774" y="380" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="799,388 807,404 799,420 791,404" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+  <rect x="774" y="540" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="799,548 807,564 799,580 791,564" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+  <rect x="774" y="700" width="50" height="80" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <polygon points="799,708 807,724 799,740 791,724" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SPANDREL ORNAMENTS (between arch and columns) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Left spandrel -->
+  <g opacity="0.45">
+    <circle cx="158" cy="350" r="55" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+    <circle cx="158" cy="350" r="40" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="158" cy="350" r="24" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+    <polygon points="158,305 163,330 188,328 168,344 176,369 158,355 140,369 148,344 128,328 153,330"
+      fill="none" stroke="#C9A84C" stroke-width="0.6"/>
+    <circle cx="158" cy="350" r="8" fill="#C9A84C" opacity="0.15"/>
+    <!-- Small decorative dots on ring -->
+    <circle cx="158" cy="295" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="213" cy="350" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="158" cy="405" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="103" cy="350" r="3" fill="#C9A84C" opacity="0.3"/>
+  </g>
+
+  <!-- Right spandrel -->
+  <g opacity="0.45">
+    <circle cx="742" cy="350" r="55" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+    <circle cx="742" cy="350" r="40" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="742" cy="350" r="24" fill="none" stroke="#C9A84C" stroke-width="0.4"/>
+    <polygon points="742,305 747,330 772,328 752,344 760,369 742,355 724,369 732,344 712,328 737,330"
+      fill="none" stroke="#C9A84C" stroke-width="0.6"/>
+    <circle cx="742" cy="350" r="8" fill="#C9A84C" opacity="0.15"/>
+    <circle cx="742" cy="295" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="797" cy="350" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="742" cy="405" r="3" fill="#C9A84C" opacity="0.3"/>
+    <circle cx="687" cy="350" r="3" fill="#C9A84C" opacity="0.3"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ARCH TILE BAND (decorative border along arch edge) -->
+  <!-- Series of small ornamental tiles following the arch curve -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g opacity="0.35" stroke="#C9A84C" stroke-width="0.5" fill="none">
+    <!-- Left arch tile marks (approximated along curve) -->
+    <rect x="130" y="480" width="16" height="16" transform="rotate(-55 138 488)"/>
+    <rect x="134" y="420" width="16" height="16" transform="rotate(-50 142 428)"/>
+    <rect x="142" y="362" width="16" height="16" transform="rotate(-43 150 370)"/>
+    <rect x="152" y="308" width="16" height="16" transform="rotate(-35 160 316)"/>
+    <rect x="165" y="258" width="16" height="16" transform="rotate(-27 173 266)"/>
+    <rect x="183" y="213" width="16" height="16" transform="rotate(-19 191 221)"/>
+    <rect x="203" y="175" width="16" height="16" transform="rotate(-12 211 183)"/>
+    <rect x="226" y="141" width="16" height="16" transform="rotate(-6 234 149)"/>
+    <rect x="252" y="114" width="16" height="16" transform="rotate(-2 260 122)"/>
+    <!-- Right arch tile marks -->
+    <rect x="754" y="480" width="16" height="16" transform="rotate(55 762 488)"/>
+    <rect x="750" y="420" width="16" height="16" transform="rotate(50 758 428)"/>
+    <rect x="742" y="362" width="16" height="16" transform="rotate(43 750 370)"/>
+    <rect x="732" y="308" width="16" height="16" transform="rotate(35 740 316)"/>
+    <rect x="719" y="258" width="16" height="16" transform="rotate(27 727 266)"/>
+    <rect x="701" y="213" width="16" height="16" transform="rotate(19 709 221)"/>
+    <rect x="681" y="175" width="16" height="16" transform="rotate(12 689 183)"/>
+    <rect x="658" y="141" width="16" height="16" transform="rotate(6 666 149)"/>
+    <rect x="632" y="114" width="16" height="16" transform="rotate(2 640 122)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- KEYSTONE ORNAMENT (top of arch) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#goldGlowHeritage)" opacity="0.75">
+    <circle cx="450" cy="26" r="32" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <circle cx="450" cy="26" r="22" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+    <circle cx="450" cy="26" r="12" fill="#C9A84C" opacity="0.12"/>
+    <!-- 12-pointed star in keystone -->
+    <polygon points="450,2 453,12 462,8 458,18 468,16 462,24 470,30 460,30 462,40 453,36 450,46 447,36 438,40 440,30 430,30 438,24 432,16 442,18 438,8 447,12"
+      fill="#C9A84C" opacity="0.4"/>
+    <circle cx="450" cy="26" r="5" fill="#C9A84C" opacity="0.5"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- OUTER FRAME BORDER OF IMAGE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="12" y="12" width="876" height="1176" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+  <rect x="22" y="22" width="856" height="1156" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+
+  <!-- Corner ornaments of image frame -->
+  <g fill="none" stroke="#C9A84C" opacity="0.45">
+    <!-- Top-left -->
+    <path d="M 12,55 L 12,12 L 55,12" stroke-width="1.5"/>
+    <path d="M 22,62 L 22,22 L 62,22" stroke-width="0.7"/>
+    <circle cx="12" cy="12" r="3.5" fill="#C9A84C" opacity="0.4"/>
+    <!-- Top-right -->
+    <path d="M 888,55 L 888,12 L 845,12" stroke-width="1.5"/>
+    <path d="M 878,62 L 878,22 L 838,22" stroke-width="0.7"/>
+    <circle cx="888" cy="12" r="3.5" fill="#C9A84C" opacity="0.4"/>
+    <!-- Bottom-left -->
+    <path d="M 12,1145 L 12,1188 L 55,1188" stroke-width="1.5"/>
+    <path d="M 22,1138 L 22,1178 L 62,1178" stroke-width="0.7"/>
+    <circle cx="12" cy="1188" r="3.5" fill="#C9A84C" opacity="0.4"/>
+    <!-- Bottom-right -->
+    <path d="M 888,1145 L 888,1188 L 845,1188" stroke-width="1.5"/>
+    <path d="M 878,1138 L 878,1178 L 838,1178" stroke-width="0.7"/>
+    <circle cx="888" cy="1188" r="3.5" fill="#C9A84C" opacity="0.4"/>
+  </g>
+
+  <!-- Side rule lines -->
+  <line x1="12" y1="600" x2="68" y2="600" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <line x1="832" y1="600" x2="888" y2="600" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <line x1="12" y1="400" x2="55" y2="400" stroke="#C9A84C" stroke-width="0.4" opacity="0.15"/>
+  <line x1="845" y1="400" x2="888" y2="400" stroke="#C9A84C" stroke-width="0.4" opacity="0.15"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- VIGNETTE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <radialGradient id="vignetteHeritage" cx="50%" cy="45%" r="68%">
+    <stop offset="0%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#080305" stop-opacity="0.7"/>
+  </radialGradient>
+  <rect width="900" height="1200" fill="url(#vignetteHeritage)"/>
+
+  <!-- Bottom fade -->
+  <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#080305" stop-opacity="0.5"/>
+  </linearGradient>
+  <rect x="0" y="900" width="900" height="300" fill="url(#bottomFade)"/>
+
+</svg>
